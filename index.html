@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Quicksand:100,200,300,400">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
 <link href='/css/styles.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -24,7 +24,136 @@
     <h3>This website understands voice commands for navigation.</h3>
     <p class="lead">Try saying "Go to Travel" or "Go to code" or "Close voice intro".</p>
 </div>
-<div id="top" name="top" class="bg-intro ha match-parent vertical"></div>
+<div id="top" name="top" class="bg-intro ha match-parent vertical horizontal">
+    <div id="carousel-example-generic" class="carousel slide match-parent vertical horizontal" data-ride="carousel">
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner match-parent vertical horizontal">
+
+        <div id="photo-llao-llao" class="item active match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Llao Llao, Aregentina
+          </div>
+        </div>
+
+        <div id="photo-camino2" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            En camino
+          </div>
+        </div>
+
+        <div id="photo-camino" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Argentina
+          </div>
+        </div>
+
+        <div id="photo-bulnes" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Patagonia
+          </div>
+        </div>
+
+        <div id="photo-el-chalten" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            El Chaltén
+          </div>
+        </div>
+
+        <div id="photo-los-antiguos" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Los Antiguos
+          </div>
+        </div>
+
+        <div id="photo-bariloche" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Bariloche, Argentina
+          </div>
+        </div>
+
+        <div id="photo-villarrica" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Volcán Villarrica, Chile
+          </div>
+        </div>
+
+        <div id="photo-iquique" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Iquique, Chile
+          </div>
+        </div>
+
+        <div id="photo-valle-luna" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Valle de la Luna, Chile
+          </div>
+        </div>
+
+        <div id="photo-canon-colca" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Cañon del Colca, Perú
+          </div>
+        </div>
+
+        <div id="photo-lago-titicaca" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Lake Titicaca
+          </div>
+        </div>
+
+        <div id="photo-cuba" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            La Habana, Cuba
+          </div>
+        </div>
+
+        <div id="photo-rome" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Rome
+          </div>
+        </div>
+
+        <div id="photo-dubrovnik" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Dubrovnik, Hrvatska
+          </div>
+        </div>
+
+        <div id="photo-lipie" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Липя / Lipie - My grandmother's village in Poland
+          </div>
+        </div>
+
+        <div id="photo-antarctica" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Antarctica
+          </div>
+        </div>
+
+        <div id="photo-morocco" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Morocco
+          </div>
+        </div>
+
+        <div id="photo-sahara" class="item match-parent vertical horizontal">
+          <div class="carousel-caption">
+            Sahara Desert
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+</div>
 <div id="travel" name="travel" class="bg-travel ha match-parent vertical">
     <div id="map-canvas" class="match-parent vertical"></div>
 </div>
@@ -103,7 +232,7 @@
 <!-- <div id="photos" name="photos" class="ha match-parent vertical"></div> -->
 
 <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <script src="//cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></script>
 <script src="/js/underscore.min.js" type="text/javascript"></script>
 <script src="/js/jquery.scrollto.min.js" type="text/javascript"></script>
@@ -178,6 +307,7 @@ $(document).ready(function() {
             // photos_position = Math.round($photos.offset().top);
             $html.removeClass("disable-scrolling");
             onScroll();
+            $('.carousel').carousel();
         }, 300);
     };
     onResize = _.throttle(onResize, 50);

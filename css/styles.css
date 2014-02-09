@@ -2,6 +2,10 @@ html.disable-scrolling {
     overflow: hidden;
 }
 
+.match-parent.horizontal {
+    width: 100%;
+}
+
 .site-title {
     position: absolute;
     top: 120px;
@@ -64,8 +68,6 @@ html.disable-scrolling {
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: url(/images/llao-llao.jpg) left top no-repeat;
-    background-size: cover;
     opacity: 1;
     -webkit-transition: all .5s ease-out;
        -moz-transition: all .5s ease-out;
@@ -73,6 +75,101 @@ html.disable-scrolling {
          -o-transition: all .5s ease-out;
             transition: all .5s ease-out;
 }
+
+.carousel-control {
+    background-image: none !important;
+}
+#photo-llao-llao {
+    background: url(http://farm4.staticflickr.com/3312/3329496538_393dd4cbef_o.jpg) left top no-repeat;
+    background-size: cover;
+}
+#photo-antarctica {
+    background: url(http://farm4.staticflickr.com/3209/3129833118_fb9a74af0a_b.jpg) 0 -220px no-repeat;
+    background-size: cover;
+}
+#photo-sahara {
+    background: url(http://farm6.staticflickr.com/5028/5878841708_25d1644c4f_o.jpg) left top no-repeat;
+    background-size: cover;
+}
+#photo-morocco {
+    background: url(http://farm6.staticflickr.com/5199/5865859815_d9c929af8f_o.jpg) left top no-repeat;
+    /*background: url(http://farm4.staticflickr.com/3057/5865894381_e79e436487_o.jpg) 0 -146px no-repeat;*/
+    background-size: cover;
+}
+#photo-lipie {
+    background: url(http://farm5.staticflickr.com/4098/4914340007_83c2b302e4_o.jpg) left bottom no-repeat;
+    background-size: cover;
+}
+#photo-dubrovnik {
+    background: url(http://farm5.staticflickr.com/4078/4865255939_1cf1ef07e4_o.jpg) left center no-repeat;
+    /*background: url(http://farm5.staticflickr.com/4134/4865870312_bc6d069fe5_o.jpg) center top no-repeat;*/
+    background-size: cover;
+}
+#photo-rome {
+    /*background: url(http://farm5.staticflickr.com/4077/4828004388_cde0317384_o.jpg) left center no-repeat;*/
+    background: url(http://farm5.staticflickr.com/4132/4834262188_d6f5d05eae_o.jpg) left center no-repeat;
+    background-size: cover;
+}
+#photo-cuba {
+    background: url(http://farm3.staticflickr.com/2611/3682888548_664260c74d_o.jpg) left center no-repeat;
+    background-size: cover;
+}
+#photo-machu-picchu {
+    background: url(http://farm4.staticflickr.com/3397/3451812820_500318faec_o.jpg) left top no-repeat;
+    background-size: cover;
+}
+#photo-lago-titicaca {
+    background: url(http://farm4.staticflickr.com/3365/3430361284_9ee989fbac_o.jpg) left top no-repeat;
+    background-size: cover;
+}
+#photo-canon-colca {
+    background: url(http://farm4.staticflickr.com/3439/3399780195_d58b788b39_o.jpg) left center no-repeat;
+    background-size: cover;
+}
+#photo-valle-luna {
+    background: url(http://farm4.staticflickr.com/3422/3384078414_6912a8b56c_o.jpg) left center no-repeat;
+    background-size: cover;
+}
+#photo-iquique {
+    background: url(http://farm4.staticflickr.com/3590/3383669428_ab7127e05c_o.jpg) left center no-repeat;
+    background-size: cover;
+}
+#photo-villarrica {
+    background: url(http://farm4.staticflickr.com/3397/3343451510_7341d676f5_o.jpg) left bottom no-repeat;
+    background-size: cover;
+}
+#photo-bariloche {
+    background: url(http://farm4.staticflickr.com/3659/3328670041_e90a3aedaa_o.jpg) left top no-repeat;
+    background-size: cover;
+}
+#photo-bridge {
+    background: url(http://farm4.staticflickr.com/3349/3328679223_43b5af3a28_o.jpg) left top no-repeat;
+    background-size: cover;
+}
+#photo-camino {
+    background: url(http://farm4.staticflickr.com/3485/3469215354_0e5d789807_o.jpg) left bottom no-repeat;
+    /*background: url(http://farm4.staticflickr.com/3549/3469217592_ea59a3d52c_o.jpg) left bottom no-repeat;*/
+    background-size: cover;
+}
+#photo-los-antiguos {
+    background: url(http://farm4.staticflickr.com/3644/3324099993_633fd3dafe_o.jpg) left bottom no-repeat;
+    background-size: cover;
+}
+#photo-el-chalten {
+    /*background: url(http://farm4.staticflickr.com/3655/3324902738_c1197a3663_o.jpg) center center no-repeat;*/
+    background: url(http://farm4.staticflickr.com/3652/3324907754_0423414dc3_o.jpg) center bottom no-repeat;
+    /*background: url(http://farm4.staticflickr.com/3614/3324875386_b38bf43e27_o.jpg) center center no-repeat;*/
+    background-size: cover;
+}
+#photo-bulnes {
+    background: url(http://farm4.staticflickr.com/3165/3080309415_00d7bd5d83_o.jpg) center bottom no-repeat;
+    background-size: cover;
+}
+#photo-camino2 {
+    background: url(http://farm4.staticflickr.com/3595/3324794488_c4747e4e27_o.jpg) center bottom no-repeat;
+    background-size: cover;
+}
+
 .start .bg-intro {
     opacity: 0;
 }
