@@ -74,7 +74,7 @@ if ( 'webkitSpeechRecognition' in window || 'speechRecognition' in window ) {
     } else if (interim_transcript.match(/go.+code/)) {
       $(".nav-code").trigger("click");
       $("#voice-intro").removeClass("showing");
-    } else if (interim_transcript.match(/go.+(home|top)/)) {
+    } else if (interim_transcript.match(/go.+(home|top|photos|fotos)/)) {
       $(".site-title a").trigger("click");
       $("#voice-intro").removeClass("showing");
     } else if (interim_transcript.match(/close|clothes/)) {

@@ -14,9 +14,9 @@
 <h1 class="site-title"><a href="#top">Jimmy Byrum</a></h1>
 <div class="ha nav-bg"></div>
 <ul class="navigation list-inline list-unstyled ha ha-">
+    <li><a class="nav-top" href="#top">Photos</a></li>
     <li><a class="nav-travel" href="#travel">Travel</a></li>
     <li><a class="nav-code" href="#code">Code</a></li>
-    <!-- <li><a class="nav-photos" href="#photos">Photos</a></li> -->
     <li class="underline"></li>
 </ul>
 <a id="voice-toggle" class="ha" href="#audio">Voice commands <span class="status">off</span></a>
@@ -280,19 +280,15 @@ $(document).ready(function() {
             $title.removeClass("fixed");
         }
 
-        // if (scroll_top >= photos_position - 10) {
-        //     $html.removeClass("section-top section-travel section-code");
-        //     $html.addClass("section-photos");
-        // } else if (scroll_top >= code_position - 10 && scroll_top <= photos_position - 10) {
         if (scroll_top >= code_position - 10) {
-            $html.removeClass("section-top section-travel section-photos");
+            $html.removeClass("section-top section-travel");
             $html.addClass("section-code");
         } else if (scroll_top >= travel_position - 10) {
-            $html.removeClass("section-top section-code section-photos");
+            $html.removeClass("section-top section-code");
             $html.addClass("section-travel");
             placePins();
         } else if (scroll_top < window_height) {
-            $html.removeClass("section-travel section-code section-photos");
+            $html.removeClass("section-travel section-code");
             $html.addClass("section-top");
         }
     };
@@ -326,7 +322,7 @@ $(document).ready(function() {
         $html.addClass("goto-" + name.substring(1));
         _.delay(function() {
             $html.removeClass("goto-" + name.substring(1));
-        }, 300);
+        }, 600);
     });
 
     var map, locations = [], li = 0, pins_placed = false, infowindows = [];

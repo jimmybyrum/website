@@ -52,6 +52,7 @@ html.disable-scrolling {
 }
 .section-code .site-title a {
     color: #333;
+    text-shadow: none;
 }
 
 .ha,
@@ -256,17 +257,14 @@ html.disable-scrolling {
 
 .section-travel a.nav-travel:hover,
 .section-code a.nav-code:hover,
-.section-photos a.nav-photos:hover {
+.section-top a.nav-top:hover {
     color: #428bca;
 }
 
-.underline,
-.goto-travel .underline {
+.underline {
     position: absolute;
-    left: 10px;
     bottom: 9px;
     border-bottom: 1px solid #428bca;
-    width: 112px;
     -webkit-transition: left .5s ease-in-out, width .5s linear;
        -moz-transition: left .5s ease-in-out, width .5s linear;
         -ms-transition: left .5s ease-in-out, width .5s linear;
@@ -274,24 +272,27 @@ html.disable-scrolling {
             transition: left .5s ease-in-out, width .5s linear;
     opacity: 0;
 }
-.section-travel .underline {
+.section-top .underline,
+.goto-top .underline {
+    left: 4px;
+    width: 125px;
+    opacity: 1;
+}
+.section-travel .underline,
+.goto-travel .underline {
+    left: 166px;
+    width: 112px;
     opacity: 1;
 }
 .section-code .underline,
 .goto-code .underline {
-    left: 156px;
+    left: 313px;
     width: 92px;
-    opacity: 1;
-}
-.section-photos .underline,
-.goto-photos .underline {
-    left: 280px;
-    width: 127px;
     opacity: 1;
 }
 
 .nav-bg,
-.goto-photos .nav-bg,
+.goto-top .nav-bg,
 .goto-travel .nav-bg {
     position: fixed;
     top: 0;
@@ -376,10 +377,6 @@ html.disable-scrolling {
 
 
 
-
-#photos {
-    background: #000;
-}
 
 
 
