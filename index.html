@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html lang="en" class="no-js start">
+<head>
+<title>Jimmy Byrum</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Quicksand:100,200,300,400">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<link href='/css/styles.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<h1 class="site-title"><a href="#top">Jimmy Byrum</a></h1>
+<div class="ha nav-bg"></div>
+<ul class="navigation list-inline list-unstyled ha ha-">
+    <li><a class="nav-travel" href="#travel">Travel</a></li>
+    <li><a class="nav-code" href="#code">Code</a></li>
+    <!-- <li><a class="nav-photos" href="#photos">Photos</a></li> -->
+    <li class="underline"></li>
+</ul>
+<div id="top" name="top" class="bg-intro ha match-parent vertical"></div>
+<div id="travel" name="travel" class="bg-travel ha match-parent vertical">
+    <div id="map-canvas" class="match-parent vertical"></div>
+</div>
+<div id="code" name="code" class="match-parent vertical">
+    <div id="editor">var resume = {
+    name: "James Byrum",
+    experience: {
+        company:    "TalkTo",
+        url:        "http://talkto.com",
+        location:   "Cambridge, MA",
+        start_date: "2010-11-16",
+        end_date:   undefined,
+        job_title:  "Engineer",
+        summary:    "Built TalkTo from the ground up with the
+                    co-founders. Initially doing only web development,
+                    over the years I've worked on the full stack
+                    and built the Android app.",
+        responsibilities: [
+            "Consumer website",
+            "Workflow application",
+            "Android App",
+            "Advertising assets",
+            "Anything else that needs done"
+        ],
+        technologies: [
+            "HTML5",
+            "CSS3",
+            "Javascript",
+            "WebRTC"
+            "SIP",
+            "Python",
+            "Django",
+            "nginx",
+            "MySQL"
+        ]
+    },
+    {
+        company:    "WebMocha",
+        url:        "http://webmocha.com",
+        start_date: "2009-10-01",
+        end_date:   "2010-11-15",
+        job_title:  "Web Developer",
+        summary:    "As a WebMocha consultant, I worked with many
+                    companies including Yahoo, ZENxd,
+                    and Jump Associates"
+    }
+    // I'll fill in the rest later
+};</div>
+    <div id="projects">
+
+        <ul class="highlights list-unstyled">
+            <li>
+                <h4><a target="_blank" href="http://talkto.com"><img src="//talkto.com/media/images/logo/logo-flat1.png" width="152" height="33" alt="TalkTo"></a></h4>
+                <p class="lead">For this last few years, I've been working with a startup based in Cambridge, MA. We make an app (<a target="_blank" href="http://talkto.com/app/apple">Apple</a>/<a target="_blank" href="http://talkto.com/app/android">Android</a>) that lets consumers send a message to any business in North America and get a text response in minutes. I built the consumer website, a web application for our call center, and the Android app. I also do anything else that needs doing. Startups are awesome.</p>
+            </li>
+            <li>
+                <h4><a target="_blank" href="http://www.ingles.mineduc.cl/"><img src="/images/minudec.png" width="200" height="71" alt="Chilean Ministry of Education"></a></h4>
+                <p class="lead">I took some time off in 2008 to be a volunteer English teacher in Chile. For six months, I taught at Liceo Polivalente Hernando de Magallanes in <a target="_blank" href="http://www.flickr.com/photos/jimmybyrum/sets/72157606769792487/">Porvenir</a>, which is a small town on the Tierra del Fuego. After that, I traveled for six months, starting in <a target="_blank" href="http://www.flickr.com/photos/jimmybyrum/sets/72157611541153932/">Antarctica</a> and then making my way north along the Andes.</p>
+            </li>
+            <li>
+                <h4><a target="_blank" href="http://yahoo.com"><img src="http://l.yimg.com/rz/l/yahoo_en-US_f_p_142x37.png" width="142" height="37" alt="Yahoo!"></a></h4>
+                <p class="lead">I made two versions of the Yahoo! home page back in the day (2004) while working in Sunnyvale, CA. In 2006, I transferred to the London, UK office and worked on the European sites. I also worked on the Starbucks Digital Network project in late 2010 doing mostly mobile web development.</p>
+            </li>
+        </ul>
+
+        <h2>GitHub / <a target="_blank" href="https://github.com/jimmybyrum">jimmybyrum</a></h2>
+        <p class="lead">I have a couple small Javascript repos that are public and potentially useful.</p>
+        <ul class="repos list-unstyled">
+            <li><a target="_blank" href="https://github.com/jimmybyrum/vault.js">Vault.js</a> is a wrapper for localStorage, sessionStorage and document.cookie that sets and gets true javascript vars, objects, etc.</a></li>
+            <li><a target="_blank" href="https://github.com/jimmybyrum/crosshatch.js">Crosshatch.js</a> is a library to manage #! urls. Since creating this, I've switched to using Backbone which has this built in. That said, crosshatch is handy for very lightweight URL management.</a></li>
+        </ul>
+
+    </div>
+</div>
+<!-- <div id="photos" name="photos" class="ha match-parent vertical"></div> -->
+
+<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></script>
+<script src="/js/underscore.min.js" type="text/javascript"></script>
+<script src="/js/jquery.scrollto.min.js" type="text/javascript"></script>
+<script src="/js/vault.min.js" type="text/javascript"></script>
+<script src="//cdn.jsdelivr.net/ace/1.1.01/min/ace.js" type="text/javascript"></script>
+<script src="/places.js" type="text/javascript"></script>
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAeV2FBqrEPvRSxvDEJzn5stgVU34GaN74&sensor=true" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    var $window = $(window);
+    var window_height;
+
+    var $travel = $("#travel");
+    var travel_position = 0;
+    var $code = $("#code");
+    var code_position = 0;
+    // var $photos = $("#photos");
+    // var photos_position = 0;
+
+    var $html = $("html");
+
+    var $title = $(".site-title");
+    var title_top = $title.position().top;
+
+    var $navigation = $(".navigation");
+    // var $nav_bg = $(".nav-bg");
+
+    _.delay(function() {
+        $html.removeClass("start");
+    }, 1000);
+
+    var onScroll = function(e) {
+        var scroll_top = $window.scrollTop();
+
+        if (scroll_top >= title_top) {
+            if ( ! $title.hasClass("fixed")) {
+                $title.removeClass("transition");
+                $title.addClass("fixed");
+            }
+        } else if (scroll_top < 10) {
+            $title.addClass("transition");
+            $title.removeClass("fixed");
+        }
+
+        // if (scroll_top >= photos_position - 10) {
+        //     $html.removeClass("section-top section-travel section-code");
+        //     $html.addClass("section-photos");
+        // } else if (scroll_top >= code_position - 10 && scroll_top <= photos_position - 10) {
+        if (scroll_top >= code_position - 10) {
+            $html.removeClass("section-top section-travel section-photos");
+            $html.addClass("section-code");
+        } else if (scroll_top >= travel_position - 10) {
+            $html.removeClass("section-top section-code section-photos");
+            $html.addClass("section-travel");
+            placePins();
+        } else if (scroll_top < window_height) {
+            $html.removeClass("section-travel section-code section-photos");
+            $html.addClass("section-top");
+        }
+    };
+    onScroll = _.throttle(onScroll, 50);
+    $window.on("scroll", onScroll);
+
+    var onResize = function() {
+        $html.addClass("disable-scrolling");
+        window_height = $window.height();
+        $(".match-parent.vertical").css("min-height", window_height + "px");
+        _.delay(function() {
+            travel_position = Math.round($travel.offset().top);
+            code_position = Math.round($code.offset().top);
+            // photos_position = Math.round($photos.offset().top);
+            $html.removeClass("disable-scrolling");
+            onScroll();
+        }, 300);
+    };
+    onResize = _.throttle(onResize, 50);
+    $window.on("resize", onResize);
+
+    onResize();
+
+    $(document).on("click", ".navigation a, .site-title a", function(e) {
+        e.preventDefault();
+        var $item = $(e.target);
+        var name = $item.attr("href");
+        var $target = $(name);
+        $.scrollTo($target, 300, {easing: "swing"});
+        $html.addClass("goto-" + name.substring(1));
+        _.delay(function() {
+            $html.removeClass("goto-" + name.substring(1));
+        }, 300);
+    });
+
+    var map, locations = [], li = 0, pins_placed = false, infowindows = [];
+    var placePin = function(location) {
+        var lat = location.coords[0];
+        var lon = location.coords[1];
+        var iw_content = location.name;
+        if (location.photos) {
+            var flickr = location.photos.split(",");
+            var f, fl = flickr.length;
+            for (f = 0; f < fl; f++) {
+                iw_content += '<br><a target="_blank" href="'+flickr[f]+'">Photos</a>';
+            }
+        }
+        var infowindow = new google.maps.InfoWindow({
+            content: iw_content
+        });
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat, lon),
+            map: map,
+            icon: "/images/pin.png",
+            title: location.name
+            // animation: google.maps.Animation.DROP
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+            infowindows.push(infowindow);
+        });
+        _.delay(placeNextPin, 10);
+    };
+    var placeNextPin = function() {
+        var location = locations[li];
+        if (location) {
+            placePin(location);
+            li++;
+        }
+    };
+    var placePins = function() {
+        if ( ! pins_placed) {
+            pins_placed = true;
+            var continent, country;
+            for (continent in places_data) {
+                for (country in places_data[continent]) {
+                    var locs = places_data[continent][country];
+                    var c, cl = locs.length;
+                    for (c = 0; c < cl; c++) {
+                        locations.push(locs[c]);
+                    }
+                }
+            }
+            placeNextPin();
+        }
+    };
+    function initialize() {
+        var mapOptions = {
+            center: new google.maps.LatLng(18, 0),
+            zoom: 2,
+            streetViewControl: false,
+            panControl: false,
+            mapTypeControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_BOTTOM,
+                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+            },
+            zoomControl: true,
+            zoomControlOptions: {
+                position: google.maps.ControlPosition.LEFT_CENTER
+            },
+            scaleControl: true,
+            scrollwheel: false
+        };
+        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        google.maps.event.addListener(map, 'click', function() {
+            console.warn(123);
+            var i, il = infowindows.length;
+            for (i = 0; i < il; i++) {
+                var infowindow = infowindows.pop();
+                infowindow.close();
+            }
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+});
+</script>
+<script src="/js/google-analytics.js" type="text/javascript"></script>
+</body>
+</html>
