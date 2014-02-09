@@ -31,7 +31,7 @@
 
         <div id="photo-llao-llao" class="item active match-parent vertical horizontal">
           <div class="carousel-caption">
-            Llao Llao, Aregentina
+            Llao Llao, Argentina
           </div>
         </div>
 
@@ -160,47 +160,49 @@
 <div id="code" name="code" class="match-parent vertical">
     <div id="editor">var resume = {
     name: "James Byrum",
-    experience: {
-        company:    "TalkTo",
-        url:        "http://talkto.com",
-        location:   "Cambridge, MA",
-        start_date: "2010-11-16",
-        end_date:   undefined,
-        job_title:  "Engineer",
-        summary:    "Built TalkTo from the ground up with the
-                    co-founders. Initially doing only web development,
-                    over the years I've worked on the full stack
-                    and built the Android app.",
-        responsibilities: [
-            "Consumer website",
-            "Workflow application",
-            "Android App",
-            "Advertising assets",
-            "Anything else that needs done"
-        ],
-        technologies: [
-            "HTML5",
-            "CSS3",
-            "Javascript",
-            "WebRTC"
-            "SIP",
-            "Python",
-            "Django",
-            "nginx",
-            "MySQL"
-        ]
-    },
-    {
-        company:    "WebMocha",
-        url:        "http://webmocha.com",
-        start_date: "2009-10-01",
-        end_date:   "2010-11-15",
-        job_title:  "Web Developer",
-        summary:    "As a WebMocha consultant, I worked with many
-                    companies including Yahoo, ZENxd,
-                    and Jump Associates"
-    }
-    // I'll fill in the rest later
+    experience: [
+        {
+            company:    "TalkTo",
+            url:        "http://talkto.com",
+            location:   "Cambridge, MA",
+            start_date: "2010-11-16",
+            end_date:   undefined,
+            job_title:  "Engineer",
+            summary:    "Built TalkTo from the ground up with the
+                        co-founders. Initially doing only web development,
+                        over the years I've worked on the full stack
+                        and built the Android app.",
+            responsibilities: [
+                "Consumer website",
+                "Workflow application",
+                "Android App",
+                "Advertising assets",
+                "Anything else that needs done"
+            ],
+            technologies: [
+                "HTML5",
+                "CSS3",
+                "Javascript",
+                "WebRTC"
+                "SIP",
+                "Python",
+                "Django",
+                "nginx",
+                "MySQL"
+            ]
+        },
+        {
+            company:    "WebMocha",
+            url:        "http://webmocha.com",
+            start_date: "2009-10-01",
+            end_date:   "2010-11-15",
+            job_title:  "Web Developer",
+            summary:    "As a WebMocha consultant, I worked with many
+                        companies including Yahoo, ZENxd,
+                        and Jump Associates"
+        }
+        // I'll fill in the rest later
+    ]
 };</div>
     <div id="projects">
 
@@ -382,10 +384,11 @@ $(document).ready(function() {
         var mapOptions = {
             center: new google.maps.LatLng(18, 0),
             zoom: 2,
+            mapTypeId: google.maps.MapTypeId.SATELLITE,
             streetViewControl: false,
             panControl: false,
             mapTypeControlOptions: {
-                position: google.maps.ControlPosition.RIGHT_BOTTOM,
+                position: google.maps.ControlPosition.BOTTOM_CENTER,
                 style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
             },
             zoomControl: true,
