@@ -22,6 +22,7 @@ html.disable-scrolling {
             transform: translate3d(0, 0, 0);
     opacity: 1;
     z-index: 10;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .3);
 }
 .site-title.transition {
     -webkit-transition: all .5s ease-out;
@@ -78,6 +79,9 @@ html.disable-scrolling {
 
 .carousel-control {
     background-image: none !important;
+}
+.carousel-caption a {
+    color: #fff;
 }
 #photo-llao-llao {
     background: url(http://farm4.staticflickr.com/3312/3329496538_393dd4cbef_o.jpg) left top no-repeat;
