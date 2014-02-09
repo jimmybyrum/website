@@ -236,6 +236,9 @@ html.disable-scrolling {
             transition: opacity .5s ease-out;
     opacity: 0;
 }
+.start #voice-intro {
+    display: none;
+}
 #voice-intro h3 {
     margin: 0 0 15px;
 }
