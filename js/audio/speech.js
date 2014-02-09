@@ -18,7 +18,7 @@ if ( 'webkitSpeechRecognition' in window || 'speechRecognition' in window ) {
     recognizing = true;
     if ( ! has_seen_intro) {
       _.delay(function() {
-        $("#voice-intro").removeClass("voice-hidden");
+        $("#voice-intro").addClass("showing");
       }, 500);
       has_seen_intro = true;
     }
@@ -67,15 +67,20 @@ if ( 'webkitSpeechRecognition' in window || 'speechRecognition' in window ) {
         interim_transcript += event.results[i][0].transcript;
       }
     }
+    console.log("Voice: ", interim_transcript);
     if (interim_transcript.match(/go.+travel/)) {
       $(".nav-travel").trigger("click");
-      $("#voice-intro").addClass("voice-hidden");
+      $("#voice-intro").removeClass("showing");
     } else if (interim_transcript.match(/go.+code/)) {
       $(".nav-code").trigger("click");
-      $("#voice-intro").addClass("voice-hidden");
+      $("#voice-intro").removeClass("showing");
     } else if (interim_transcript.match(/go.+(home|top)/)) {
       $(".site-title a").trigger("click");
-      $("#voice-intro").addClass("voice-hidden");
+      $("#voice-intro").removeClass("showing");
+    } else if (interim_transcript.match(/close|clothes/)) {
+      $("#voice-intro").removeClass("showing");
+    } else if (interim_transcript.match(/show|open/)) {
+      $("#voice-intro").addClass("showing");
     }
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
