@@ -341,6 +341,9 @@ $(document).ready(function() {
                 iw_content += '<br><a target="_blank" href="'+flickr[f]+'">Photos</a>';
             }
         }
+        if (location.date) {
+            iw_content += "<br>"+location.date;
+        }
         var infowindow = new google.maps.InfoWindow({
             content: iw_content
         });
@@ -373,10 +376,14 @@ $(document).ready(function() {
                     var locs = places_data[continent][country];
                     var c, cl = locs.length;
                     for (c = 0; c < cl; c++) {
+                        locs[c].epoch = new Date(locs[c].date);
                         locations.push(locs[c]);
                     }
                 }
             }
+            locations.sort(function(a, b) {
+                return a.epoch - b.epoch;
+            });
             placeNextPin();
         }
     };
