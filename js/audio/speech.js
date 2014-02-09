@@ -12,8 +12,16 @@ if ( 'webkitSpeechRecognition' in window || 'speechRecognition' in window ) {
   recognition.continuous = true;
   recognition.interimResults = true;
 
+  var has_seen_intro = false;
+
   recognition.onstart = function() {
     recognizing = true;
+    if ( ! has_seen_intro) {
+      _.delay(function() {
+        $("#voice-intro").removeClass("voice-hidden");
+      }, 500);
+      has_seen_intro = true;
+    }
   };
 
   recognition.onerror = function(event) {
@@ -59,6 +67,16 @@ if ( 'webkitSpeechRecognition' in window || 'speechRecognition' in window ) {
         interim_transcript += event.results[i][0].transcript;
       }
     }
+    if (interim_transcript.match(/go.+travel/)) {
+      $(".nav-travel").trigger("click");
+      $("#voice-intro").addClass("voice-hidden");
+    } else if (interim_transcript.match(/go.+code/)) {
+      $(".nav-code").trigger("click");
+      $("#voice-intro").addClass("voice-hidden");
+    } else if (interim_transcript.match(/go.+(home|top)/)) {
+      $(".site-title a").trigger("click");
+      $("#voice-intro").addClass("voice-hidden");
+    }
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
@@ -76,7 +94,7 @@ function capitalize(s) {
   return s.replace(first_char, function(m) { return m.toUpperCase(); });
 }
 
-function copyButton() {
+function stopButton() {
   if (recognizing) {
     recognizing = false;
     recognition.stop();

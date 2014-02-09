@@ -110,6 +110,44 @@ html.disable-scrolling {
 .section-code .navigation a:hover {
     color: #2a6496;
 }
+#voice-toggle {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 10;
+    font-family: 'Quicksand', helvetica, arial, sans-serif;
+    font-weight: 400;
+}
+#voice-intro {
+    position: fixed;
+    top: 150px;
+    right: 50px;
+    z-index: 11;
+    display: block;
+    width: 500px;
+    padding: 30px;
+    background: #000;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    color: #fff;
+    font-family: 'Quicksand', helvetica, arial, sans-serif;
+    -webkit-transition: opacity .5s ease-out;
+       -moz-transition: opacity .5s ease-out;
+        -ms-transition: opacity .5s ease-out;
+         -o-transition: opacity .5s ease-out;
+            transition: opacity .5s ease-out;
+    opacity: 1;
+}
+#voice-intro h3 {
+    margin: 0 0 15px;
+}
+#voice-intro .lead {
+    margin: 0;
+}
+#voice-intro.voice-hidden {
+    opacity: 0;
+}
 
 .section-travel a.nav-travel:hover,
 .section-code a.nav-code:hover,
