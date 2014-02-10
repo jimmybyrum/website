@@ -7,6 +7,9 @@
              -o-transform: none;
                 transform: none;
     }
+    .carousel-control {
+        display: none;
+    }
     .header {
         position: fixed;
         top: 0;
