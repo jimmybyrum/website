@@ -1,7 +1,6 @@
 @media (max-width: 767px) {
     .ha,
     .ha- * {
-        position: relative;
         -webkit-transform: none;
            -moz-transform: none;
             -ms-transform: none;
@@ -20,6 +19,7 @@
     }
     .site-title {
         margin-top: 5px;
+        font-size: 32px;
     }
     .site-title,
     .start .site-title,
@@ -30,6 +30,16 @@
         left: auto;
         right: auto;
         bottom: auto;
+    }
+    .start .header {
+        opacity: 0;
+    }
+    .site-title.fixed {
+        position: relative;
+    }
+    .site-title a {
+        color: #333;
+        text-shadow: none;
     }
     .navigation {
         font-size: 20px;
