@@ -24,6 +24,10 @@ $(document).ready(function() {
         $html.removeClass("start");
     }, 1000);
 
+    var pauseCarousel = function(){
+        $("#carousel-example-generic").carousel("pause");
+    };
+
     var onScroll = function(e) {
         var scroll_top = $window.scrollTop();
 
@@ -40,9 +44,11 @@ $(document).ready(function() {
         if (scroll_top >= code_position - 50) {
             $html.removeClass("section-top section-travel");
             $html.addClass("section-code");
+            pauseCarousel();
         } else if (scroll_top >= travel_position - 50) {
             $html.removeClass("section-top section-code");
             $html.addClass("section-travel");
+            pauseCarousel();
             placePins();
         } else if (scroll_top < window_height) {
             $html.removeClass("section-travel section-code");
@@ -91,7 +97,7 @@ $(document).ready(function() {
         _.delay(function() {
             $html.removeClass("goto-" + name.substring(1));
         }, 600);
-        $("#carousel-example-generic").carousel("pause");
+        pauseCarousel();
     });
 
     $(document).on("click", ".glyphicon-remove-sign", function(e) {
