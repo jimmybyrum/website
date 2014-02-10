@@ -24,8 +24,20 @@ $(document).ready(function() {
         $html.removeClass("start");
     }, 1000);
 
+    var startCarousel = function() {
+        $(".carousel").carousel();
+        $(".carousel-inner").swipe( {
+            swipeLeft:function(event, direction, distance, duration, fingerCount) {
+                $(this).parent().carousel('prev');
+            },
+            swipeRight: function() {
+                $(this).parent().carousel('next');
+            },
+            threshold: 75
+        });
+    };
     var pauseCarousel = function(){
-        $("#carousel-example-generic").carousel("pause");
+        $(".carousel").carousel("pause");
     };
 
     var onScroll = function(e) {
@@ -78,7 +90,7 @@ $(document).ready(function() {
             if ( ! didInit) {
                 didInit = true;
                 onScroll();
-                $('.carousel').carousel();
+                startCarousel();
             }
         }, 300);
     };
