@@ -107,6 +107,13 @@ $(document).ready(function() {
     });
 
     var map, locations = [], li = 0, pins_placed = false, infowindows = [];
+    var hideAllInfowindows = function() {
+        var i, il = infowindows.length;
+        for (i = 0; i < il; i++) {
+            var infowindow = infowindows.pop();
+            infowindow.close();
+        }
+    };
     var placePin = function(location) {
         var lat = location.coords[0];
         var lon = location.coords[1];
@@ -132,6 +139,7 @@ $(document).ready(function() {
             // animation: google.maps.Animation.DROP
         });
         google.maps.event.addListener(marker, 'click', function() {
+            hideAllInfowindows();
             infowindow.open(map, marker);
             infowindows.push(infowindow);
         });
@@ -166,7 +174,7 @@ $(document).ready(function() {
     };
     function initialize() {
         var mapOptions = {
-            center: new google.maps.LatLng(18, 0),
+            center: new google.maps.LatLng((narrow ? 50 : 18), 0),
             zoom: 2,
             mapTypeId: google.maps.MapTypeId.SATELLITE,
             streetViewControl: false,
@@ -184,12 +192,7 @@ $(document).ready(function() {
         };
         map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
         google.maps.event.addListener(map, 'click', function() {
-            console.warn(123);
-            var i, il = infowindows.length;
-            for (i = 0; i < il; i++) {
-                var infowindow = infowindows.pop();
-                infowindow.close();
-            }
+            hideAllInfowindows();
         });
     }
     google.maps.event.addDomListener(window, 'load', initialize);
