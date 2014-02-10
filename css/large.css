@@ -228,4 +228,9 @@ html.disable-scrolling {
     margin-bottom: 15px;
 }
 
+@media (max-width: 992px) {
+    .site-title {
+        font-size: 34px;
+    }
+}
 

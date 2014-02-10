@@ -11,7 +11,6 @@
         position: fixed;
         top: 0;
         left: 0;
-        right: 0;
         z-index: 50;
         padding: 15px;
         background: #fff;
@@ -43,6 +42,10 @@
     }
     .navigation {
         font-size: 20px;
+    }
+    .navigation a:hover,
+    .navigation a:active {
+        color: #428bca;
     }
     .dialog {
         display: none;
@@ -78,5 +81,10 @@
     }
     #voice-toggle {
         display: none;
+    }
+}
+@media (max-width: 567px) {
+    .header {
+        right: 0;
     }
 }
