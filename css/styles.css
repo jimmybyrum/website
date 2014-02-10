@@ -214,19 +214,30 @@ html.disable-scrolling {
 }
 #voice-toggle {
     position: fixed;
-    bottom: 15px;
-    right: 15px;
+    top: 70px;
+    right: 55px;
     z-index: 10;
     font-family: 'Quicksand', helvetica, arial, sans-serif;
     font-weight: 400;
+    -webkit-transition: all 1s ease-in-out .5s;
+       -moz-transition: all 1s ease-in-out .5s;
+        -ms-transition: all 1s ease-in-out .5s;
+         -o-transition: all 1s ease-in-out .5s;
+            transition: all 1s ease-in-out .5s;
+    opacity: 1;
 }
-#voice-intro {
+@media (max-width: 767px) {
+    #voice-toggle {
+        display: none;
+    }
+}
+.start #voice-toggle {
+    opacity: 0;
+}
+.black-dialog {
     position: fixed;
-    top: 150px;
-    right: 50px;
     z-index: -1;
     display: block;
-    width: 500px;
     padding: 30px;
     background: #000;
     -webkit-border-radius: 5px;
@@ -241,18 +252,31 @@ html.disable-scrolling {
             transition: opacity .5s ease-out;
     opacity: 0;
 }
-.start #voice-intro {
+.start .black-dialog {
     display: none;
 }
-#voice-intro h3 {
+.black-dialog h3,
+.black-dialog p:not(:last-child) {
     margin: 0 0 15px;
 }
-#voice-intro .lead {
-    margin: 0;
-}
-#voice-intro.showing {
-    opacity: 1;
+.black-dialog.showing {
+    opacity: .9;
     z-index: 11;
+}
+.black-dialog .glyphicon-remove-sign {
+    float: right;
+    font-size: 18px;
+    cursor: pointer;
+}
+#voice-intro {
+    top: 150px;
+    right: 50px;
+    width: 500px;
+}
+#help {
+    top: 15%;
+    right: 15%;
+    left: 15%;
 }
 
 .section-travel a.nav-travel:hover,
@@ -355,6 +379,16 @@ html.disable-scrolling {
     float: right;
     margin: 90px 30px 30px 0;
     width: 45%;
+}
+@media (max-width: 767px) {
+    #editor {
+        display: none;
+    }
+    #projects {
+        float: none;
+        width: auto;
+        margin: 90px 30px 30px;
+    }
 }
 #projects h2 {
     font-weight: 300;

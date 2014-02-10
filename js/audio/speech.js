@@ -2,12 +2,14 @@ var final_transcript = '';
 var recognizing = false;
 var ignore_onend;
 var start_timestamp;
-if ( 'webkitSpeechRecognition' in window || 'speechRecognition' in window ) {
+if ( window.webkitSpeechRecognition || window.mozSpeechRecognition || window.speechRecognition ) {
   var recognition;
   if ( window.speechRecognition ) {
     recognition = new speechRecognition();
   } else if ( window.webkitSpeechRecognition ) {
     recognition = new webkitSpeechRecognition();
+  } else if ( window.mozSpeechRecognition ) {
+    recognition = new mozSpeechRecognition();
   }
   recognition.continuous = true;
   recognition.interimResults = true;
@@ -68,24 +70,66 @@ if ( 'webkitSpeechRecognition' in window || 'speechRecognition' in window ) {
       }
     }
     console.log("Voice: ", interim_transcript);
-    if (interim_transcript.match(/go.+travel/)) {
-      $(".nav-travel").trigger("click");
-      $("#voice-intro").removeClass("showing");
-    } else if (interim_transcript.match(/go.+code/)) {
-      $(".nav-code").trigger("click");
-      $("#voice-intro").removeClass("showing");
-    } else if (interim_transcript.match(/go.+(home|top|photos|fotos)/)) {
-      $(".site-title a").trigger("click");
-      $("#voice-intro").removeClass("showing");
+    if (interim_transcript.match(/travel/)) {
+      executeVoiceCommand(function() {
+        $(".nav-travel").trigger("click");
+        closeVoice();
+      });
+    } else if (interim_transcript.match(/code/)) {
+      executeVoiceCommand(function() {
+        $(".nav-code").trigger("click");
+        closeVoice();
+      });
+    } else if (interim_transcript.match(/home|top|photos|fotos/)) {
+      executeVoiceCommand(function() {
+        $(".site-title a").trigger("click");
+        closeVoice();
+      });
     } else if (interim_transcript.match(/close|clothes/)) {
-      $("#voice-intro").removeClass("showing");
-    } else if (interim_transcript.match(/show|open/)) {
-      $("#voice-intro").addClass("showing");
+      executeVoiceCommand(function() {
+        $(".black-dialog").removeClass("showing");
+      });
+    } else if (interim_transcript.match(/show/)) {
+      executeVoiceCommand(function() {
+        showVoice();
+      });
+    } else if (interim_transcript.match(/next/)) {
+      executeVoiceCommand(function() {
+        $("#carousel-example-generic").carousel("pause");
+        $("#carousel-example-generic").carousel("next");
+      });
+    } else if (interim_transcript.match(/previous|last|back/)) {
+      executeVoiceCommand(function() {
+        $("#carousel-example-generic").carousel("pause");
+        $("#carousel-example-generic").carousel("prev");
+      });
+    } else if (interim_transcript.match(/help/)) {
+      executeVoiceCommand(function() {
+        closeVoice();
+        $("#help").addClass("showing");
+      });
+    } else if (interim_transcript.match(/open/)) {
+      executeVoiceCommand(function() {
+        $(".item.active .carousel-caption a").trigger("click");
+      });
     }
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
   };
+} else {
+  $("#voice-toggle").remove();
+}
+
+var executeVoiceCommand = _.debounce(function(cmd) {
+  cmd();
+}, 700, true);
+
+function closeVoice() {
+  $("#voice-intro").removeClass("showing");
+}
+function showVoice() {
+  $("#voice-intro").addClass("showing");
 }
 
 var two_line = /\n\n/g;
