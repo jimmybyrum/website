@@ -2,7 +2,7 @@
 .clearfix { zoom: 1; }
 
 
-
+.carousel-item,
 .ha,
 .ha- * {
     -webkit-transform: translateZ(0);

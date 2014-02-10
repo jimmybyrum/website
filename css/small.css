@@ -1,6 +1,6 @@
 @media (max-width: 767px) {
-    .ha,
-    .ha- * {
+    .ha:not(.ha-mobile),
+    .ha-:not(.ha-mobile) * {
         -webkit-transform: none;
            -moz-transform: none;
             -ms-transform: none;
