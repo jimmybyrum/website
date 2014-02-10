@@ -87,7 +87,7 @@ if ( window.webkitSpeechRecognition || window.mozSpeechRecognition || window.spe
       });
     } else if (interim_transcript.match(/close|clothes/)) {
       executeVoiceCommand(function() {
-        $(".black-dialog").removeClass("showing");
+        $(".dialog").removeClass("showing");
       });
     } else if (interim_transcript.match(/show/)) {
       executeVoiceCommand(function() {

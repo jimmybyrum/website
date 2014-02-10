@@ -1,0 +1,231 @@
+html.disable-scrolling {
+    overflow: hidden;
+}
+
+.match-parent.horizontal {
+    width: 100%;
+}
+
+.site-title {
+    position: absolute;
+    top: 120px;
+    left: 45px;
+    color: #fff;
+    font-size: 40px;
+    line-height: normal;
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    opacity: 1;
+    z-index: 10;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .3);
+}
+.site-title.transition {
+    -webkit-transition: all .5s ease-out;
+       -moz-transition: all .5s ease-out;
+        -ms-transition: all .5s ease-out;
+         -o-transition: all .5s ease-out;
+            transition: all .5s ease-out;
+}
+.start .site-title {
+    -webkit-transform: translate3d(-50px, 0, 0);
+       -moz-transform: translate3d(-50px, 0, 0);
+        -ms-transform: translate3d(-50px, 0, 0);
+         -o-transform: translate3d(-50px, 0, 0);
+            transform: translate3d(-50px, 0, 0);
+    opacity: 0;
+}
+.site-title.fixed {
+    position: fixed;
+    top: 0;
+}
+.site-title a {
+    position: relative;
+    color: #fff;
+}
+
+
+.bg-intro {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 1;
+    -webkit-transition: all .5s ease-out;
+       -moz-transition: all .5s ease-out;
+        -ms-transition: all .5s ease-out;
+         -o-transition: all .5s ease-out;
+            transition: all .5s ease-out;
+}
+
+.carousel-control {
+    background-image: none !important;
+}
+
+.start .bg-intro {
+    opacity: 0;
+}
+
+.navigation {
+    position: fixed;
+    top: 15px;
+    right: 50px;
+    z-index: 10;
+    color: #fff;
+    font-size: 40px;
+    -webkit-transition: all 1s ease-in-out .5s;
+       -moz-transition: all 1s ease-in-out .5s;
+        -ms-transition: all 1s ease-in-out .5s;
+         -o-transition: all 1s ease-in-out .5s;
+            transition: all 1s ease-in-out .5s;
+}
+.start .navigation {
+    top: -1.3em;
+}
+.navigation a,
+.navigation a:after {
+    -webkit-transition: all .2s linear;
+       -moz-transition: all .2s linear;
+        -ms-transition: all .2s linear;
+         -o-transition: all .2s linear;
+            transition: all .2s linear;
+}
+.navigation a:hover,
+.navigation a:active {
+    color: #fff;
+}
+.section-code .navigation a:hover,
+.section-code .navigation a:active {
+    color: #2a6496;
+}
+#voice-toggle {
+    position: fixed;
+    top: 70px;
+    right: 55px;
+    z-index: 10;
+    font-family: 'Quicksand', helvetica, arial, sans-serif;
+    font-weight: 400;
+    -webkit-transition: all 1s ease-in-out .5s;
+       -moz-transition: all 1s ease-in-out .5s;
+        -ms-transition: all 1s ease-in-out .5s;
+         -o-transition: all 1s ease-in-out .5s;
+            transition: all 1s ease-in-out .5s;
+    opacity: 1;
+}
+.start #voice-toggle {
+    opacity: 0;
+}
+
+.start .dialog {
+    display: none;
+}
+.dialog h3,
+.dialog p:not(:last-child) {
+    margin: 0 0 15px;
+}
+#voice-intro {
+    top: 150px;
+    right: 50px;
+    width: 500px;
+}
+#help {
+    top: 15%;
+    right: 15%;
+    left: 15%;
+}
+
+.section-travel a.nav-travel:hover,
+.section-travel a.nav-travel:active,
+.section-code a.nav-code:hover,
+.section-code a.nav-code:active,
+.section-top a.nav-top:hover,
+.section-top a.nav-top:active {
+    color: #428bca;
+}
+
+.section-top .underline,
+.goto-top .underline {
+    left: 4px;
+    width: 125px;
+    opacity: 1;
+}
+.section-travel .underline,
+.goto-travel .underline {
+    left: 166px;
+    width: 112px;
+    opacity: 1;
+}
+.section-code .underline,
+.goto-code .underline {
+    left: 313px;
+    width: 92px;
+    opacity: 1;
+}
+
+.nav-bg,
+.goto-top .nav-bg,
+.goto-travel .nav-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    display: block;
+    height: 80px;
+    background: transparent;
+    -webkit-transition: all .5s ease-out;
+       -moz-transition: all .5s ease-out;
+        -ms-transition: all .5s ease-out;
+         -o-transition: all .5s ease-out;
+            transition: all .5s ease-out;
+}
+.section-code .nav-bg,
+.goto-code .nav-bg {
+    background: #fff;
+    background: rgba(255, 255, 255, .9);
+}
+
+
+
+#code {
+    position: relative;
+}
+.start #code {
+    visibility: hidden;
+}
+
+#editor {
+    position: absolute;
+    top: 90px;
+    left: 50px;
+    width: 45%;
+    bottom: 50px;
+}
+#projects {
+    position: relative;
+    float: right;
+    margin: 90px 30px 30px 0;
+    width: 45%;
+}
+#projects h2 {
+    font-weight: 300;
+}
+#projects > h2:first-child {
+    margin-top: 0;
+}
+#projects h4 {
+    margin: 0;
+}
+#projects .highlights p {
+    margin: 0;
+}
+#projects .highlights li {
+    margin-bottom: 30px;
+}
+#projects .repos li:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+
