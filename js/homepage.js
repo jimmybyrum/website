@@ -33,7 +33,7 @@ $(document).ready(function() {
             swipeRight: function() {
                 $(this).parent().carousel('prev');
             },
-            threshold: 75
+            threshold: 30
         });
     };
     var pauseCarousel = function(){
