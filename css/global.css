@@ -92,14 +92,18 @@
 }
 .site-title a,
 .site-title a:active,
+.site-title a:focus,
 .navigation a,
-.navigation a:active {
+.navigation a:active,
+.navigation a:focus {
     outline: none;
 }
 .site-title a:hover,
 .site-title a:active,
+.site-title a:focus,
 .navigation a:hover,
-.navigation a:active {
+.navigation a:active,
+.navigation a:focus {
     text-decoration: none;
 }
 
