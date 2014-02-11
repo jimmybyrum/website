@@ -76,9 +76,10 @@ $(document).ready(function() {
         window_height = $window.height();
         if (narrow) {
             var mobile_height = window_height - header_height;
-            $(".match-parent.vertical").css("min-height", (mobile_height - 50) + "px");
             $("#top, #top .match-parent.vertical").css("min-height", window_height + "px");
-            $("#travel, #code").css("padding-top", header_height + "px");
+            $("#travel, #travel .match-parent.vertical").css("min-height", (window_height - 25) + "px");
+            $("#code, #code .match-parent.vertical").css("min-height", mobile_height + "px");
+            $("#code").css("padding-top", header_height + "px");
         } else {
             $(".match-parent.vertical").css("min-height", window_height + "px");
         }
@@ -192,7 +193,7 @@ $(document).ready(function() {
     };
     function initialize() {
         var mapOptions = {
-            center: new google.maps.LatLng((narrow ? 50 : 18), 0),
+            center: new google.maps.LatLng((narrow ? 60 : 18), 0),
             zoom: 2,
             mapTypeId: google.maps.MapTypeId.SATELLITE,
             streetViewControl: false,
