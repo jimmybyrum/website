@@ -2,9 +2,9 @@
 .clearfix { zoom: 1; }
 
 
-.carousel-item,
-.ha,
-.ha- * {
+.ha-on .carousel .item,
+.ha-on .ha,
+.ha-on .ha- * {
     -webkit-transform: translateZ(0);
        -moz-transform: translateZ(0);
         -ms-transform: translateZ(0);
@@ -21,6 +21,29 @@
     color: #fff;
 }
 
+.csstransforms3d .carousel .item {
+    -webkit-transition: -webkit-transform .6s ease-in-out;
+       -moz-transition:    -moz-transform .6s ease-in-out;
+        -ms-transition:     -ms-transform .6s ease-in-out;
+         -o-transition:      -o-transform .6s ease-in-out;
+            transition:         transform .6s ease-in-out;
+}
+.csstransforms3d .carousel-inner>.active,
+.csstransforms3d .carousel-inner>.prev.right,
+.csstransforms3d .carousel-inner>.next.left {
+    left: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+.csstransforms3d .carousel-inner>.active.left,
+.csstransforms3d .carousel-inner>.prev {
+    left: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+}
+.csstransforms3d .carousel-inner>.active.right,
+.csstransforms3d .carousel-inner>.next {
+    left: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+}
 
 
 .dialog {
