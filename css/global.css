@@ -89,6 +89,7 @@
 .navigation {
     font-family: 'Quicksand', helvetica, arial, sans-serif;
     font-weight: 300;
+    outline: none;
 }
 .site-title a:hover,
 .site-title a:active,
