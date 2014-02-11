@@ -112,6 +112,10 @@ if ( window.webkitSpeechRecognition || window.mozSpeechRecognition || window.spe
       executeVoiceCommand(function() {
         $(".item.active .carousel-caption a").trigger("click");
       });
+    } else if (interim_transcript.match(/voice.+(off|stop)/)) {
+      executeVoiceCommand(function() {
+        $("#voice-toggle").trigger("click");
+      });
     }
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
