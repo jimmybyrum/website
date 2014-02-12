@@ -20,6 +20,10 @@ $(document).ready(function() {
 
     var $navigation = $(".navigation");
 
+    var $help = $("#help");
+
+    var $carousel = $("#carousel-example-generic");
+
     _.delay(function() {
         $html.removeClass("start");
     }, 1000);
@@ -119,7 +123,7 @@ $(document).ready(function() {
 
     $(document).on("keypress", function(e) {
         if (e.keyCode === 63) {
-            $("#help").addClass("showing");
+            $help.addClass("showing");
         } else if (e.keyCode === 27) {
             $(".dialog").removeClass("showing");
         }
@@ -221,17 +225,91 @@ $(document).ready(function() {
     editor.getSession().setMode("ace/mode/javascript");
 
     var $voice = $("#voice-toggle");
-    $voice.on('click', function(e) {
-        e.preventDefault();
-        $voice.toggleClass("voice-on");
-        if ($voice.hasClass("voice-on")) {
-            $voice.find(".status").text("on");
-            startButton();
-        } else {
-            $voice.find(".status").text("off");
-            stopButton();
-        }
-    });
+    var $voice_intro = $("#voice-intro");
+    var has_seen_intro = false;
+    var executeVoiceCommand = _.debounce(function(cmd) {
+      cmd();
+    }, 700, true);
+    var closeVoice = function() {
+      $voice_intro.removeClass("showing");
+    };
+    var showVoice = function() {
+      $voice_intro.addClass("showing");
+    };
+    if ( ! SPEECH.isCapable()) {
+        $voice.remove();
+    } else {
+        SPEECH.onStart = function() {
+            if ( ! has_seen_intro) {
+                _.delay(function() {
+                    $voice_intro.addClass("showing");
+                }, 500);
+                has_seen_intro = true;
+            }
+        };
+        SPEECH.onResult = function(interim_transcript) {
+            console.log("Voice: ", interim_transcript);
+            if (interim_transcript.match(/travel/)) {
+                executeVoiceCommand(function() {
+                    $(".nav-travel").trigger("click");
+                    closeVoice();
+                });
+            } else if (interim_transcript.match(/code/)) {
+                executeVoiceCommand(function() {
+                    $(".nav-code").trigger("click");
+                    closeVoice();
+                });
+            } else if (interim_transcript.match(/home|top|photos|fotos/)) {
+                executeVoiceCommand(function() {
+                    $(".site-title a").trigger("click");
+                    closeVoice();
+                });
+            } else if (interim_transcript.match(/close|clothes/)) {
+                executeVoiceCommand(function() {
+                    $(".dialog").removeClass("showing");
+                });
+            } else if (interim_transcript.match(/show/)) {
+                executeVoiceCommand(function() {
+                    showVoice();
+                });
+            } else if (interim_transcript.match(/next/)) {
+                executeVoiceCommand(function() {
+                    $carousel.carousel("pause");
+                    $carousel.carousel("next");
+                });
+            } else if (interim_transcript.match(/previous|last|back/)) {
+                executeVoiceCommand(function() {
+                    $carousel.carousel("pause");
+                    $carousel.carousel("prev");
+                });
+            } else if (interim_transcript.match(/help/)) {
+                executeVoiceCommand(function() {
+                    closeVoice();
+                    $help.addClass("showing");
+                });
+            } else if (interim_transcript.match(/open/)) {
+                executeVoiceCommand(function() {
+                    $(".item.active .carousel-caption a").trigger("click");
+                });
+            } else if (interim_transcript.match(/voice.+(off|stop)/)) {
+                executeVoiceCommand(function() {
+                    $voice.trigger("click");
+                });
+            }
+        };
+
+        $voice.on('click', function(e) {
+            e.preventDefault();
+            $voice.toggleClass("voice-on");
+            if ($voice.hasClass("voice-on")) {
+                $voice.find(".status").text("on");
+                SPEECH.start();
+            } else {
+                $voice.find(".status").text("off");
+                SPEECH.stop();
+            }
+        });
+    }
 
     if (narrow) {
         placePins();
