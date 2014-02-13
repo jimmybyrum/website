@@ -174,7 +174,7 @@ $(document).ready(function() {
         }
     };
     var placePins = function() {
-        if ( ! pins_placed) {
+        if ( ! pins_placed && map) {
             pins_placed = true;
             var continent, country;
             for (continent in places_data) {
