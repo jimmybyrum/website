@@ -165,8 +165,8 @@
 <div id="travel" name="travel" class="section bg-travel ha match-parent vertical">
     <div id="map-canvas" class="match-parent vertical"></div>
 </div>
-<div id="code" name="code" class="section match-parent vertical clearfix">
-    <div id="editor">var resume = {
+<div id="code" name="code" class="section resume match-parent vertical clearfix">
+    <div id="editor" class="col-sm-6">var resume = {
     name: "James Byrum",
     experience: [
         {
@@ -176,10 +176,10 @@
             start_date: "2010-11-16",
             end_date:   undefined,
             job_title:  "Engineer",
-            summary:    "Built TalkTo from the ground up with the
-                        co-founders. Initially doing only web development,
-                        over the years I've worked on the full stack
-                        and built the Android app.",
+            summary:    "Built TalkTo from the ground up with the\
+                        co-founders. Initially doing only web\
+                        development, over the years I've worked\
+                        on the full stack and built the Android app.",
             responsibilities: [
                 "Consumer website",
                 "Workflow application",
@@ -187,32 +187,49 @@
                 "Advertising assets",
                 "Anything else that needs done"
             ],
-            technologies: [
-                "HTML5",
-                "CSS3",
-                "Javascript",
-                "WebRTC"
-                "SIP",
-                "Python",
-                "Django",
-                "nginx",
-                "MySQL"
-            ]
         },
         {
             company:    "WebMocha",
             url:        "http://webmocha.com",
+            location:   "San Francisco, CA",
             start_date: "2009-10-01",
             end_date:   "2010-11-15",
             job_title:  "Web Developer",
-            summary:    "As a WebMocha consultant, I worked with many
-                        companies including Yahoo, ZENxd,
+            summary:    "As a WebMocha consultant, I worked with many\
+                        companies including Yahoo, ZENxd,\
                         and Jump Associates"
-        }
-        // I'll fill in the rest later
+        },
+        {
+            company:    "Yahoo!",
+            url:        "http://yahoo.com",
+            locations:  [ "Sunnvyvale, CA", "London, UK" ],
+            start_date: "2004-05-01",
+            end_date:   "2008-06-30",
+            job_title:  "Web Developer",
+            summary:    "I was the lead frontend engineer for the\
+                        homepage while working in Sunnyvale for two\
+                        years. I then transferred to the London office\
+                        and worked on the European homepages."
+            awards:     "Superstar Award, June 2006"
+        },
+    ],
+    technologies: [
+        "HTML5", "CSS3", "Javascript",
+        "WebRTC", "SIP",
+        "Python", "Django", "Nginx", "Apache",
+        "MySQL", "Redis",
+        "Java"
+    ],
+    libraries: [
+        "Modernizr", "Backbone", "Underscore", "jQuery",
+        "Bootstrap", "Handlebars", "Strophe", "Vault"
+    ],
+    tools: [
+        "Sublime Text", "vi", "Eclipse",
+        "Photoshop", "Illustrator", "Fireworks"
     ]
 };</div>
-    <div id="projects">
+    <div id="projects" class="col-sm-6">
 
         <ul class="highlights list-unstyled">
             <li>
@@ -286,8 +303,6 @@
 <script src="/js/speech.js" type="text/javascript"></script>
 <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAeV2FBqrEPvRSxvDEJzn5stgVU34GaN74&sensor=true" type="text/javascript"></script>
 <script src="/js/homepage.js" type="text/javascript"></script>
-<span id="interim_span" class="hide"></span>
-<span id="final_span" class="hide"></span>
 <script src="/js/google-analytics.js" type="text/javascript"></script>
 </body>
 </html>
