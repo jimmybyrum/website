@@ -10,6 +10,8 @@
   var lang = "en-US";
   var commands = [];
 
+  if ( ! window.console) window.console = { log: function() {} };
+
   // now and debounce taken from underscore.js
   // by Jeremy Ashkenas http://underscorejs.org/
   var now = Date.now || function() { return new Date().getTime(); };
