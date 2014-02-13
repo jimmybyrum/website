@@ -24,9 +24,7 @@ $(document).ready(function() {
 
     var $carousel = $("#carousel-example-generic");
 
-    _.delay(function() {
-        $html.removeClass("start");
-    }, 1000);
+    $html.removeClass("start");
 
     var startCarousel = function() {
         $(".carousel").carousel();
@@ -227,9 +225,6 @@ $(document).ready(function() {
     var $voice = $("#voice-toggle");
     var $voice_intro = $("#voice-intro");
     var has_seen_intro = false;
-    var executeVoiceCommand = _.debounce(function(cmd) {
-      cmd();
-    }, 700, true);
     var closeVoice = function() {
       $voice_intro.removeClass("showing");
     };
@@ -247,56 +242,75 @@ $(document).ready(function() {
                 has_seen_intro = true;
             }
         };
-        SPEECH.onResult = function(interim_transcript) {
-            console.log("Voice: ", interim_transcript);
-            if (interim_transcript.match(/travel/)) {
-                executeVoiceCommand(function() {
+        SPEECH.min_confidence = .2;
+        SPEECH.addVoiceCommands([
+            {
+                command: "travel",
+                callback: function() {
                     $(".nav-travel").trigger("click");
                     closeVoice();
-                });
-            } else if (interim_transcript.match(/code/)) {
-                executeVoiceCommand(function() {
+                }
+            },
+            {
+                command: "code",
+                callback: function() {
                     $(".nav-code").trigger("click");
                     closeVoice();
-                });
-            } else if (interim_transcript.match(/home|top|photos|fotos/)) {
-                executeVoiceCommand(function() {
+                }
+            },
+            {
+                command: "home|top|photos|fotos",
+                callback: function() {
                     $(".site-title a").trigger("click");
                     closeVoice();
-                });
-            } else if (interim_transcript.match(/close|clothes/)) {
-                executeVoiceCommand(function() {
+                }
+            },
+            {
+                command: "close|clothes",
+                callback: function() {
                     $(".dialog").removeClass("showing");
-                });
-            } else if (interim_transcript.match(/show/)) {
-                executeVoiceCommand(function() {
+                }
+            },
+            {
+                command: "show",
+                callback: function() {
                     showVoice();
-                });
-            } else if (interim_transcript.match(/next/)) {
-                executeVoiceCommand(function() {
+                }
+            },
+            {
+                command: "next",
+                callback: function() {
                     $carousel.carousel("pause");
                     $carousel.carousel("next");
-                });
-            } else if (interim_transcript.match(/previous|last|back/)) {
-                executeVoiceCommand(function() {
+                }
+            },
+            {
+                command: "previous|last|back",
+                callback: function() {
                     $carousel.carousel("pause");
                     $carousel.carousel("prev");
-                });
-            } else if (interim_transcript.match(/help/)) {
-                executeVoiceCommand(function() {
+                }
+            },
+            {
+                command: "help",
+                callback: function() {
                     closeVoice();
                     $help.addClass("showing");
-                });
-            } else if (interim_transcript.match(/open/)) {
-                executeVoiceCommand(function() {
+                }
+            },
+            {
+                command: "open",
+                callback: function() {
                     $(".item.active .carousel-caption a").trigger("click");
-                });
-            } else if (interim_transcript.match(/voice.+(off|stop)/)) {
-                executeVoiceCommand(function() {
+                }
+            },
+            {
+                command: "voice.+(off|stop)",
+                callback: function() {
                     $voice.trigger("click");
-                });
+                }
             }
-        };
+        ]);
 
         $voice.on('click', function(e) {
             e.preventDefault();
