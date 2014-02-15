@@ -8,8 +8,9 @@ html.disable-scrolling {
 
 .site-title {
     position: absolute;
-    top: 120px;
+    top: 125px;
     left: 45px;
+    margin: 15px 0 0;
     color: #fff;
     font-size: 40px;
     line-height: normal;

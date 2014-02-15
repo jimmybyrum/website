@@ -161,6 +161,11 @@
     text-shadow: none;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
 }
+@media (min-width: 768px) {
+    .section-code .site-title {
+        margin-top: 13px;
+    }
+}
 
 
 
