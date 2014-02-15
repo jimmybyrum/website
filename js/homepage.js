@@ -24,6 +24,11 @@ $(document).ready(function() {
 
     var $carousel = $("#carousel-example-generic");
 
+    var min = 0;
+    var max = $carousel.find(".item").size() - 1;
+    var random = Math.floor(Math.random() * (max - min + 1)) + min;
+    $carousel.find(".item").removeClass("active");
+    $carousel.find(".item").eq(random).addClass("active");
     $html.removeClass("start");
 
     var startCarousel = function() {
