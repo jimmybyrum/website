@@ -75,11 +75,18 @@ html.disable-scrolling {
     z-index: 10;
     color: #fff;
     font-size: 40px;
-    -webkit-transition: all 1s ease-in-out .5s;
-       -moz-transition: all 1s ease-in-out .5s;
-        -ms-transition: all 1s ease-in-out .5s;
-         -o-transition: all 1s ease-in-out .5s;
-            transition: all 1s ease-in-out .5s;
+    -webkit-transition: all 1s ease-in-out;
+       -moz-transition: all 1s ease-in-out;
+        -ms-transition: all 1s ease-in-out;
+         -o-transition: all 1s ease-in-out;
+            transition: all 1s ease-in-out;
+}
+.no-touch .navigation {
+    -webkit-transition-delay: .5s;
+       -moz-transition-delay: .5s;
+        -ms-transition-delay: .5s;
+         -o-transition-delay: .5s;
+            transition-delay: .5s;
 }
 .start .navigation {
     top: -1.3em;
