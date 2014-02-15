@@ -213,6 +213,7 @@ $(document).ready(function() {
         var mapOptions = {
             center: new google.maps.LatLng((narrow ? 60 : 18), 0),
             zoom: 2,
+            minZoom: 2,
             mapTypeId: google.maps.MapTypeId.SATELLITE,
             streetViewControl: false,
             panControl: false,
@@ -230,6 +231,23 @@ $(document).ready(function() {
         map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
         google.maps.event.addListener(map, 'click', function() {
             hideAllInfowindows();
+        });
+
+        var allowedBounds = new google.maps.LatLngBounds(
+             new google.maps.LatLng(-75, -160),
+             new google.maps.LatLng(75, 160)
+        );
+        var lastValidCenter = map.getCenter();
+
+        google.maps.event.addListener(map, 'center_changed', function() {
+            var new_center = map.getCenter();
+            // console.warn(new_center.lat(), new_center.lng());
+            if ( allowedBounds.contains(new_center) ) {
+                lastValidCenter = map.getCenter();
+                return;
+            }
+            // not valid anymore => return to last valid position
+            map.panTo(lastValidCenter);
         });
     }
     google.maps.event.addDomListener(window, 'load', initialize);
