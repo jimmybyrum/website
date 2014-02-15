@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var $window = $(window);
-    var window_height;
+    var window_height = $window.height();
 
     var hi_res = window.devicePixelRatio && window.devicePixelRatio>1;
     var narrow = window.innerWidth && window.innerWidth<768;
@@ -90,28 +90,32 @@ $(document).ready(function() {
 
     var didInit = false;
     var onResize = function() {
-        $html.addClass("disable-scrolling");
-        window_height = $window.height();
-        if (narrow) {
-            var mobile_height = window_height - header_height;
-            $("#top, #top .match-parent.vertical").css("min-height", window_height + "px");
-            $("#travel, #travel .match-parent.vertical").css("min-height", (window_height - 25) + "px");
-            $("#code, #code .match-parent.vertical").css("min-height", mobile_height + "px");
-            $("#code").css("padding-top", header_height + "px");
-        } else {
-            $(".match-parent.vertical").css("min-height", window_height + "px");
-        }
-        setCodeHeight();
-        _.delay(function() {
-            travel_position = Math.round($travel.offset().top);
-            code_position = Math.round($code.offset().top);
-            $html.removeClass("disable-scrolling");
-            if ( ! didInit) {
-                didInit = true;
-                onScroll();
-                startCarousel();
+        var diff = Math.abs($window.height() - window_height);
+        var do_resize = !Modernizr.touch || diff > 100;
+        if ( ! didInit || do_resize) {
+            $html.addClass("disable-scrolling");
+            window_height = $window.height();
+            if (narrow) {
+                var mobile_height = window_height - header_height;
+                $("#top, #top .match-parent.vertical").css("min-height", window_height + "px");
+                $("#travel, #travel .match-parent.vertical").css("min-height", (window_height - 25) + "px");
+                $("#code, #code .match-parent.vertical").css("min-height", mobile_height + "px");
+                $("#code").css("padding-top", header_height + "px");
+            } else {
+                $(".match-parent.vertical").css("min-height", window_height + "px");
             }
-        }, 300);
+            setCodeHeight();
+            _.delay(function() {
+                travel_position = Math.round($travel.offset().top);
+                code_position = Math.round($code.offset().top);
+                $html.removeClass("disable-scrolling");
+                if ( ! didInit) {
+                    didInit = true;
+                    onScroll();
+                    startCarousel();
+                }
+            }, 300);
+        }
     };
     onResize = _.throttle(onResize, 50);
     $window.on("resize", onResize);
