@@ -150,13 +150,13 @@
     font-family: Consolas, "Liberation Mono", Courier, monospace;
 }
 .section-code .site-title:before {
-    content: "{name:\"";
+    content: "{";
     color: #333;
     text-shadow: none;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
 }
 .section-code .site-title:after {
-    content: "\"}";
+    content: "}";
     color: #333;
     text-shadow: none;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
