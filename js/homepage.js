@@ -233,21 +233,18 @@ $(document).ready(function() {
             hideAllInfowindows();
         });
 
-        var allowedBounds = new google.maps.LatLngBounds(
-             new google.maps.LatLng(-75, -160),
-             new google.maps.LatLng(75, 160)
-        );
-        var lastValidCenter = map.getCenter();
-
-        google.maps.event.addListener(map, 'center_changed', function() {
-            var new_center = map.getCenter();
-            // console.warn(new_center.lat(), new_center.lng());
-            if ( allowedBounds.contains(new_center) ) {
-                lastValidCenter = map.getCenter();
-                return;
-            }
-            // not valid anymore => return to last valid position
-            map.panTo(lastValidCenter);
+        google.maps.event.addListenerOnce(map, 'idle', function(){
+            var allowedBounds = map.getBounds();
+            var lastValidCenter = map.getCenter();
+            google.maps.event.addListener(map, 'center_changed', function() {
+                var new_center = map.getCenter();
+                if ( allowedBounds.contains(new_center) ) {
+                    lastValidCenter = map.getCenter();
+                    return;
+                }
+                // not valid anymore => return to last valid position
+                map.panTo(lastValidCenter);
+            });
         });
     }
     google.maps.event.addDomListener(window, 'load', initialize);
