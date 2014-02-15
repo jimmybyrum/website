@@ -388,10 +388,9 @@ $(document).ready(function() {
         });
     }
 
-    if (narrow) {
+    if (Modernizr.touch) {
         placePins();
-    }
-    if ( ! Modernizr.touch) {
+    } else {
         $(".footer a").tooltip();
     }
 });
