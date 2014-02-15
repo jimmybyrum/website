@@ -69,16 +69,16 @@ $(document).ready(function() {
         if (scroll_top >= code_position - 50) {
             $html.removeClass("section-top section-travel");
             $html.addClass("section-code");
-            pauseCarousel();
         } else if (scroll_top >= travel_position - 50) {
             $html.removeClass("section-top section-code");
             $html.addClass("section-travel");
-            pauseCarousel();
             placePins();
         } else if (scroll_top < window_height) {
             $html.removeClass("section-travel section-code");
             $html.addClass("section-top");
         }
+
+        pauseCarousel();
     };
     onScroll = _.throttle(onScroll, 50);
     $window.on("scroll", onScroll);

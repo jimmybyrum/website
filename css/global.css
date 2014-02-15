@@ -35,6 +35,13 @@
          -o-transition:      -o-transform .6s ease-in-out;
             transition:         transform .6s ease-in-out;
 }
+.csstransforms3d.disable-transition .carousel .item {
+    -webkit-transition: none;
+       -moz-transition: none;
+        -ms-transition: none;
+         -o-transition: none;
+            transition: none;
+}
 .csstransforms3d .carousel-inner>.active,
 .csstransforms3d .carousel-inner>.prev.right,
 .csstransforms3d .carousel-inner>.next.left {
@@ -143,13 +150,13 @@
     font-family: Consolas, "Liberation Mono", Courier, monospace;
 }
 .section-code .site-title:before {
-    content: "{";
+    content: "{name:\"";
     color: #333;
     text-shadow: none;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
 }
 .section-code .site-title:after {
-    content: "}";
+    content: "\"}";
     color: #333;
     text-shadow: none;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
