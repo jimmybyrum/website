@@ -143,7 +143,7 @@ $(document).ready(function() {
     });
 
     $(document).on("keydown", function(e) {
-        console.warn(e.keyCode);
+        // console.warn(e.keyCode);
         if (e.keyCode === 191) {
             $help.addClass("showing");
         } else if (e.keyCode === 27) {
