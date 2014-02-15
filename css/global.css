@@ -73,23 +73,23 @@
     position: fixed;
     z-index: -1;
     display: block;
-    padding: 30px;
+    padding: 15px 30px 30px;
     background: #000;
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
             border-radius: 5px;
     color: #fff;
     font-family: 'Quicksand', helvetica, arial, sans-serif;
-    -webkit-transition: opacity .5s ease-out;
-       -moz-transition: opacity .5s ease-out;
-        -ms-transition: opacity .5s ease-out;
-         -o-transition: opacity .5s ease-out;
-            transition: opacity .5s ease-out;
+    -webkit-transition: opacity .1s ease-out, z-index .1s ease-out;
+       -moz-transition: opacity .1s ease-out, z-index .1s ease-out;
+        -ms-transition: opacity .1s ease-out, z-index .1s ease-out;
+         -o-transition: opacity .1s ease-out, z-index .1s ease-out;
+            transition: opacity .1s ease-out, z-index .1s ease-out;
     opacity: 0;
 }
 .dialog.showing {
     opacity: .9;
-    z-index: 11;
+    z-index: 20;
 }
 .dialog .glyphicon-remove-sign {
     float: right;

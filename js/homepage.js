@@ -5,6 +5,8 @@ $(document).ready(function() {
     var hi_res = window.devicePixelRatio && window.devicePixelRatio>1;
     var narrow = window.innerWidth && window.innerWidth<768;
 
+    var current_section = "section-top";
+
     var $travel = $("#travel");
     var travel_position = 0;
     var $code = $("#code");
@@ -73,15 +75,16 @@ $(document).ready(function() {
 
         if (scroll_top >= code_position - 50) {
             $html.removeClass("section-top section-travel");
-            $html.addClass("section-code");
+            current_section = "section-code";
         } else if (scroll_top >= travel_position - 50) {
             $html.removeClass("section-top section-code");
-            $html.addClass("section-travel");
+            current_section = "section-travel";
             placePins();
         } else if (scroll_top < window_height) {
             $html.removeClass("section-travel section-code");
-            $html.addClass("section-top");
+            current_section = "section-top";
         }
+        $html.addClass(current_section);
 
         pauseCarousel();
     };
@@ -139,13 +142,38 @@ $(document).ready(function() {
         $(e.target).parent().removeClass("showing");
     });
 
-    $(document).on("keypress", function(e) {
-        if (e.keyCode === 63) {
+    $(document).on("keydown", function(e) {
+        console.warn(e.keyCode);
+        if (e.keyCode === 191) {
             $help.addClass("showing");
         } else if (e.keyCode === 27) {
             $(".dialog").removeClass("showing");
+        } else if (e.keyCode === 39 || e.keyCode === 76) {
+            $carousel.carousel("next");
+        } else if (e.keyCode === 37 || e.keyCode === 72) {
+            $carousel.carousel("prev");
+        } else if (e.keyCode === 75) {
+            if (current_section === "section-code") {
+                $(".nav-travel").trigger("click");
+            } else if (current_section === "section-travel") {
+                $(".nav-top").trigger("click");
+            }
+        } else if (e.keyCode === 74) {
+            if (current_section === "section-top") {
+                $(".nav-travel").trigger("click");
+            } else if (current_section === "section-travel") {
+                $(".nav-code").trigger("click");
+            }
+        } else if (e.keyCode === 79) {
+            openCurrentPhoto();
         }
     });
+
+    var openCurrentPhoto = function() {
+        var $link = $(".item.active .carousel-caption a");
+        var href = $link.attr("href");
+        $link.trigger("click");
+    };
 
     var map, locations = [], li = 0, pins_placed = false, infowindows = [];
     var hideAllInfowindows = function() {
@@ -336,7 +364,7 @@ $(document).ready(function() {
             {
                 command: "open",
                 callback: function() {
-                    $(".item.active .carousel-caption a").trigger("click");
+                    openCurrentPhoto();
                 }
             },
             {

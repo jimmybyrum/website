@@ -139,9 +139,17 @@ html.disable-scrolling {
     width: 500px;
 }
 #help {
-    top: 15%;
+    top: 12%;
     right: 15%;
     left: 15%;
+}
+#help li {
+    line-height: 2em;
+}
+#help .label {
+    color: #000;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    font-size: 14px;
 }
 
 .section-travel a.nav-travel:hover,
