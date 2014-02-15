@@ -18,6 +18,7 @@
         padding: 15px;
         background: #fff;
         background: rgba(255, 255, 255, .8);
+        text-align: center;
     }
     .site-title {
         margin-top: 5px;
@@ -44,6 +45,8 @@
         text-shadow: none;
     }
     .navigation {
+        display: inline-block;
+        margin: 0 auto;
         font-size: 20px;
     }
     .navigation a:hover,
@@ -55,6 +58,9 @@
     }
     .underline.ha {
         bottom: 3px;
+    }
+    .nav-bg {
+        display: none;
     }
     .section-top .underline,
     .goto-top .underline {
@@ -74,19 +80,21 @@
         width: 46px;
         opacity: 1;
     }
-    #editor {
-        display: none;
+    #code {
+        padding: 50px 30px;
     }
+    .editor-cx,
     #projects {
-        float: none;
-        width: auto;
-        margin: 30px 30px;
+        margin-bottom: 30px;
     }
     #voice-toggle {
         display: none;
     }
 }
 @media (max-width: 567px) {
+    .editor-cx {
+        display: none;
+    }
     .header {
         right: 0;
     }

@@ -196,18 +196,19 @@ html.disable-scrolling {
     visibility: hidden;
 }
 
+#code {
+    padding: 90px 50px 0;
+}
+.editor-cx {
+    position: relative;
+}
 #editor {
     position: absolute;
-    top: 90px;
-    left: 50px;
-    width: 45%;
-    bottom: 50px;
-}
-#projects {
-    position: relative;
-    float: right;
-    margin: 90px 30px 30px 0;
-    width: 45%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-height: 500px;
 }
 #projects h2 {
     font-weight: 300;

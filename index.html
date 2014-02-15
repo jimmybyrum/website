@@ -9,6 +9,7 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Quicksand:300,400">
 <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 <link href='/css/global.css' rel='stylesheet' type='text/css'>
 <link href='/css/large.css' rel='stylesheet' type='text/css'>
 <link href='/css/small.css' rel='stylesheet' type='text/css'>
@@ -16,7 +17,7 @@
 </head>
 <body>
 
-<div class="header clearfix">
+<header class="header clearfix">
     <h1 class="site-title ha"><a href="#top">Jimmy Byrum</a></h1>
     <ul class="navigation list-inline list-unstyled ha">
         <li><a class="nav-top ha" href="#top">Photos</a></li>
@@ -24,7 +25,7 @@
         <li><a class="nav-code ha" href="#code">Code</a></li>
         <li class="underline ha"></li>
     </ul>
-</div>
+</header>
 <a id="voice-toggle" class="ha label label-primary" href="#audio">Voice commands <span class="status">off</span></a>
 <div class="ha nav-bg"></div>
 <div id="voice-intro" class="ha dialog"><i class="glyphicon glyphicon-remove-sign"></i>
@@ -166,7 +167,8 @@
     <div id="map-canvas" class="match-parent vertical"></div>
 </div>
 <div id="code" name="code" class="section resume match-parent vertical clearfix">
-    <div id="editor" class="col-sm-6">var resume = {
+    <div class="col-sm-6 editor-cx">
+        <div id="editor">var resume = {
     name: "James Byrum",
     experience: [
         {
@@ -209,8 +211,14 @@
             summary:    "I was the lead frontend engineer for the\
                         homepage while working in Sunnyvale for two\
                         years. I then transferred to the London office\
-                        and worked on the European homepages."
-            awards:     "Superstar Award, June 2006"
+                        and worked on the European homepages, as well\
+                        as several Yahoo! For Good and\
+                        Yahoo! Green projects."
+            awards: [
+                "Exceptional Performance Contributor Award, March 2007",
+                "Superstar Award, September 2006",
+                "Best User Experience, Yahoo! Hack Day, November 2005"
+            ]
         },
     ],
     technologies: [
@@ -229,6 +237,7 @@
         "Photoshop", "Illustrator", "Fireworks"
     ]
 };</div>
+    </div>
     <div id="projects" class="col-sm-6">
 
         <ul class="highlights list-unstyled">
@@ -256,7 +265,17 @@
 
     </div>
 </div>
-<!-- <div id="photos" name="photos" class="ha match-parent vertical"></div> -->
+<footer class="footer text-center">
+    <ul class="social list-unstyled list-inline row wrap-content">
+        <li><a title="Twitter" data-placement="bottom" target="_blank" class="twitter" href="http://twitter.com/jimmybyrum"><i class="fa fa-twitter-square"></i></a></li>
+        <li><a title="Facebook" data-placement="bottom" target="_blank" class="facebook" href="http://facebook.com/jimmybyrum78"><i class="fa fa-facebook-square"></i></a></li>
+        <li><a title="LinkedIn" data-placement="bottom" target="_blank" class="linkedin" href="http://linkedin.com/in/jimmybyrum"><i class="fa fa-linkedin-square"></i></a></li>
+        <li><a title="GitHub" data-placement="bottom" target="_blank" class="github" href="http://github.com/jimmybyrum"><i class="fa fa-github-square"></i></a></li>
+        <li><a title="Flickr" data-placement="bottom" target="_blank" class="flickr" href="http://www.flickr.com/photos/jimmybyrum/"><i class="fa fa-flickr"></i></a></li>
+        <li><a title="Strava" data-placement="bottom" target="_blank" class="strava" href="http://www.strava.com/athletes/424412"><i class="fa fa-strava-square"></i></a></li>
+        <li><a title="me@jimmybyrum.com" data-placement="bottom" target="_blank" class="email" href="mailto:me@jimmybyrum.com"><i class="fa fa-pencil-square"></i></a></li>
+    </ul>
+</footer>
 <div id="help" class="dialog ha container-fluid"><i class="glyphicon glyphicon-remove-sign"></i>
     <h3>Voice commands</h3>
     <div class="col-sm-6">
@@ -292,7 +311,7 @@
 </div>
 
 <script src="/js/modernizr.js"></script>
-<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/underscore.min.js" type="text/javascript"></script>
 <script src="/js/jquery.scrollto.min.js" type="text/javascript"></script>

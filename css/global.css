@@ -13,6 +13,13 @@
 }
 
 
+.wrap-content {
+    display: inline-block;
+}
+.match-parent {
+    display: block;
+}
+
 
 .carousel-control {
     background-image: none !important;
@@ -147,6 +154,54 @@
     text-shadow: none;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
 }
+
+
+
+
+.footer {
+    padding: 50px 60px;
+    background: #666;
+    font-family: 'Quicksand', helvetica, arial, sans-serif;
+    font-weight: 200;
+    font-size: 42px;
+}
+.footer .social {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #fff;
+}
+.fa.fa-strava-square:before {
+    content: "";
+    position: relative;
+    top: 3px;
+    display: block;
+    width: 36px;
+    height: 36px;
+    background: url(/images/strava2b.png) center center no-repeat;
+    background-size: 100% auto;
+}
+.footer .tooltip {
+    margin: -5px 0 0;
+    padding: 0;
+}
+.footer .tooltip .tooltip-arrow {
+    border: none;
+}
+.footer .tooltip .tooltip-inner {
+    max-width: 400px;
+    background: transparent;
+    font-weight: 400;
+    font-size: 22px;
+}
+
+
+
+
+
+
+
+
 
 
 
