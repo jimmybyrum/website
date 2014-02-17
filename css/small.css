@@ -10,17 +10,19 @@
     .carousel-control {
         display: none;
     }
-    .header {
+    body .header {
         position: fixed;
         top: 0;
         left: 0;
+        right: auto;
         z-index: 50;
-        padding: 15px;
+        padding: 15px 30px;
         background: #fff;
         background: rgba(255, 255, 255, .8);
         text-align: center;
     }
     .site-title {
+        z-index: 60;
         margin-top: 0;
         font-size: 32px;
     }
@@ -37,8 +39,14 @@
     .start .header {
         opacity: 0;
     }
+    .site-title,
     .site-title.fixed {
-        position: relative;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: auto;
+        padding: 15px;
+        text-align: center;
     }
     .site-title a {
         color: #333;
@@ -46,8 +54,10 @@
     }
     .navigation {
         display: inline-block;
+        padding-top: 45px;
         margin: 0 auto;
         font-size: 20px;
+        text-align: center;
     }
     .navigation a:hover,
     .navigation a:active {
@@ -59,26 +69,33 @@
     .underline.ha {
         bottom: 3px;
     }
-    .nav-bg {
-        display: none;
-    }
     .section-top .underline,
     .goto-top .underline {
         left: 2px;
-        width: 63px;
+        width: 64px;
         opacity: 1;
     }
     .section-travel .underline,
     .goto-travel .underline {
-        left: 88px;
+        left: 79px;
         width: 56px;
         opacity: 1;
     }
     .section-code .underline,
-    .goto-code .underline {
-        left: 166px;
-        width: 46px;
+    .goto-code .underline,
+    .section-footer .underline,
+    .goto-footer .underline {
+        left: 148px;
+        width: 45px;
         opacity: 1;
+    }
+    .section-footer .underline,
+    .goto-footer .underline {
+        opacity: 0;
+    }
+    .section-code .site-title a,
+    .section-footer .site-title a {
+        font-size: 28px;
     }
     #code {
         padding: 50px 30px;
@@ -95,7 +112,10 @@
     .editor-cx {
         display: none;
     }
-    .header {
+    .site-title,
+    .site-title.fixed,
+    body .header {
+        left: 0;
         right: 0;
     }
 }

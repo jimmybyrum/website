@@ -105,7 +105,9 @@ html.disable-scrolling {
     color: #fff;
 }
 .section-code .navigation a:hover,
-.section-code .navigation a:active {
+.section-code .navigation a:active,
+.section-footer .navigation a:hover,
+.section-footer .navigation a:active {
     color: #2a6496;
 }
 #voice-toggle {
@@ -169,27 +171,33 @@ html.disable-scrolling {
 }
 .section-travel .underline,
 .goto-travel .underline {
-    left: 166px;
-    width: 112px;
+    left: 158px;
+    width: 110px;
     opacity: 1;
 }
 .section-code .underline,
 .goto-code .underline {
-    left: 313px;
-    width: 92px;
+    left: 294px;
+    width: 87px;
+    opacity: 1;
+}
+.section-footer .underline,
+.goto-footer .underline {
+    left: 500px;
+    width: 87px;
     opacity: 1;
 }
 
-.nav-bg,
-.goto-top .nav-bg,
-.goto-travel .nav-bg {
+header,
+.goto-top header,
+.goto-travel header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 9;
     display: block;
-    height: 80px;
+    min-height: 80px;
     background: transparent;
     -webkit-transition: all .5s ease-out;
        -moz-transition: all .5s ease-out;
@@ -197,8 +205,10 @@ html.disable-scrolling {
          -o-transition: all .5s ease-out;
             transition: all .5s ease-out;
 }
-.section-code .nav-bg,
-.goto-code .nav-bg {
+.section-code header,
+.goto-code header,
+.section-footer header,
+.goto-footer header {
     background: #fff;
     background: rgba(255, 255, 255, .9);
 }
@@ -244,10 +254,3 @@ html.disable-scrolling {
 #projects .repos li:not(:last-child) {
     margin-bottom: 15px;
 }
-
-@media (max-width: 992px) {
-    .site-title {
-        font-size: 34px;
-    }
-}
-

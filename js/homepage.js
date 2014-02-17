@@ -26,12 +26,33 @@ $(document).ready(function() {
 
     var $carousel = $("#carousel-example-generic");
 
+    var $footer = $("footer");
+    var footer_position = 0;
+
     var min = 0;
     var max = $carousel.find(".item").size() - 1;
     var random = Math.floor(Math.random() * (max - min + 1)) + min;
     $carousel.find(".item").removeClass("active");
     $carousel.find(".item").eq(random).addClass("active");
     $html.removeClass("start");
+
+    var setCurrentSection = function(section) {
+        $html.removeClass("section-top section-travel section-code section-footer");
+        current_section = section;
+        $html.addClass(current_section);
+    };
+
+    var gotoSection = function(section) {
+        if (section === "section-top") {
+            $(".nav-top").trigger("click");
+        } else if (section === "section-travel") {
+            $(".nav-travel").trigger("click");
+        } else if (section === "section-code") {
+            $(".nav-code").trigger("click");
+        } else if (section === "section-footer") {
+            $.scrollTo($footer, 300, {easing: "swing"});
+        }
+    };
 
     var startCarousel = function() {
         $(".carousel").carousel();
@@ -73,18 +94,16 @@ $(document).ready(function() {
             $title.removeClass("fixed");
         }
 
-        if (scroll_top >= code_position - 50) {
-            $html.removeClass("section-top section-travel");
-            current_section = "section-code";
+        if (scroll_top >= footer_position) {
+            setCurrentSection("section-footer");
+        } else if (scroll_top >= code_position - 50) {
+            setCurrentSection("section-code");
         } else if (scroll_top >= travel_position - 50) {
-            $html.removeClass("section-top section-code");
-            current_section = "section-travel";
+            setCurrentSection("section-travel");
             placePins();
         } else if (scroll_top < window_height) {
-            $html.removeClass("section-travel section-code");
-            current_section = "section-top";
+            setCurrentSection("section-top");
         }
-        $html.addClass(current_section);
 
         pauseCarousel();
     };
@@ -111,6 +130,7 @@ $(document).ready(function() {
             _.delay(function() {
                 travel_position = Math.round($travel.offset().top);
                 code_position = Math.round($code.offset().top);
+                footer_position = Math.round($footer.offset().top - (window_height - $footer.height()));
                 $html.removeClass("disable-scrolling");
                 if ( ! didInit) {
                     didInit = true;
@@ -153,16 +173,20 @@ $(document).ready(function() {
         } else if (e.keyCode === 37 || e.keyCode === 72) {
             $carousel.carousel("prev");
         } else if (e.keyCode === 75) {
-            if (current_section === "section-code") {
-                $(".nav-travel").trigger("click");
+            if (current_section === "section-footer") {
+                gotoSection("section-code");
+            } else if (current_section === "section-code") {
+                gotoSection("section-travel");
             } else if (current_section === "section-travel") {
-                $(".nav-top").trigger("click");
+                gotoSection("section-top");
             }
         } else if (e.keyCode === 74) {
             if (current_section === "section-top") {
-                $(".nav-travel").trigger("click");
+                gotoSection("section-travel");
             } else if (current_section === "section-travel") {
-                $(".nav-code").trigger("click");
+                gotoSection("section-code");
+            } else if (current_section === "section-code") {
+                gotoSection("section-footer");
             }
         } else if (e.keyCode === 79) {
             openCurrentPhoto();

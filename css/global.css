@@ -144,25 +144,30 @@
 }
 
 
-.section-code .site-title a {
+.section-code .site-title a,
+.section-footer .site-title a {
     color: #333;
     text-shadow: none;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
+    font-size: 38px;
 }
-.section-code .site-title:before {
+.section-code .site-title:before,
+.section-footer .site-title:before {
     content: "{";
     color: #333;
     text-shadow: none;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
 }
-.section-code .site-title:after {
+.section-code .site-title:after,
+.section-footer .site-title:after {
     content: "}";
     color: #333;
     text-shadow: none;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
 }
 @media (min-width: 768px) {
-    .section-code .site-title {
+    .section-code .site-title,
+    .section-footer .site-title {
         margin-top: 13px;
     }
 }
