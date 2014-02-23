@@ -76,11 +76,11 @@ html.disable-scrolling {
     z-index: 10;
     color: #fff;
     font-size: 40px;
-    -webkit-transition: all 1s ease-in-out;
-       -moz-transition: all 1s ease-in-out;
-        -ms-transition: all 1s ease-in-out;
-         -o-transition: all 1s ease-in-out;
-            transition: all 1s ease-in-out;
+    -webkit-transition: top 1s ease-in-out;
+       -moz-transition: top 1s ease-in-out;
+        -ms-transition: top 1s ease-in-out;
+         -o-transition: top 1s ease-in-out;
+            transition: top 1s ease-in-out;
 }
 .no-touch .navigation {
     -webkit-transition-delay: .5s;
@@ -117,11 +117,11 @@ html.disable-scrolling {
     z-index: 10;
     font-family: 'Quicksand', helvetica, arial, sans-serif;
     font-weight: 400;
-    -webkit-transition: all 1s ease-in-out .5s;
-       -moz-transition: all 1s ease-in-out .5s;
-        -ms-transition: all 1s ease-in-out .5s;
-         -o-transition: all 1s ease-in-out .5s;
-            transition: all 1s ease-in-out .5s;
+    -webkit-transition: opacity 1s ease-in-out .5s;
+       -moz-transition: opacity 1s ease-in-out .5s;
+        -ms-transition: opacity 1s ease-in-out .5s;
+         -o-transition: opacity 1s ease-in-out .5s;
+            transition: opacity 1s ease-in-out .5s;
     opacity: 1;
 }
 .start #voice-toggle {
