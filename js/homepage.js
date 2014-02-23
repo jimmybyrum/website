@@ -11,6 +11,8 @@ $(document).ready(function() {
     var travel_position = 0;
     var $code = $("#code");
     var code_position = 0;
+    var $year = $("#map-year span");
+    var $years = $("#map-years");
 
     var $html = $("html");
 
@@ -199,7 +201,7 @@ $(document).ready(function() {
         $link.trigger("click");
     };
 
-    var map, locations = [], li = 0, pins_placed = false, infowindows = [];
+    var map, locations = [], li = 0, pins_placed = false, markers = [], infowindows = [];
     var hideAllInfowindows = function() {
         var i, il = infowindows.length;
         for (i = 0; i < il; i++) {
@@ -220,6 +222,7 @@ $(document).ready(function() {
         }
         if (location.date) {
             iw_content += "<br>"+location.date;
+            $year.html(location.year);
         }
         var infowindow = new google.maps.InfoWindow({
             content: iw_content
@@ -228,9 +231,11 @@ $(document).ready(function() {
             position: new google.maps.LatLng(lat, lon),
             map: map,
             icon: "/images/pin.png",
-            title: location.name
+            title: location.name,
+            year: location.year
             // animation: google.maps.Animation.DROP
         });
+        markers.push(marker);
         google.maps.event.addListener(marker, 'click', function() {
             hideAllInfowindows();
             infowindow.open(map, marker);
@@ -243,8 +248,18 @@ $(document).ready(function() {
         if (location) {
             placePin(location);
             li++;
+        } else {
+            _.delay(function() {
+                $year.parent().addClass("hidden");
+            }, 3000);
         }
     };
+    var getNextYear = function() {
+        return current_year++;
+    };
+    var current_year = 1978;
+    var now_year = new Date().getFullYear();
+    var year_count = {};
     var placePins = function() {
         if ( ! pins_placed && map) {
             pins_placed = true;
@@ -254,7 +269,14 @@ $(document).ready(function() {
                     var locs = places_data[continent][country];
                     var c, cl = locs.length;
                     for (c = 0; c < cl; c++) {
-                        locs[c].epoch = new Date(locs[c].date);
+                        var date = new Date(locs[c].date);
+                        var year = date.getFullYear();
+                        if ( ! year_count[year]) {
+                            year_count[year] = 0;
+                        }
+                        locs[c].epoch = date;
+                        locs[c].year = year;
+                        year_count[year]++;
                         locations.push(locs[c]);
                     }
                 }
@@ -262,9 +284,26 @@ $(document).ready(function() {
             locations.sort(function(a, b) {
                 return a.epoch - b.epoch;
             });
+            for (var y = current_year; y <= now_year; y++) {
+                if (year_count[y]) {
+                    $years.append('<li><a class="year" data-value="'+y+'" href="/year/'+y+'/">\''+y.toString().substring(2,4)+'</a></li>');
+                } else {
+                    $years.append('<li>\''+y.toString().substring(2,4)+'</li>');
+                }
+            }
             placeNextPin();
         }
     };
+    $(document).on("click", ".year", function(e) {
+        e.preventDefault();
+        var $year = $(e.target);
+        var y = parseInt($year.attr("data-value"), 10);
+        var i, il = markers.length;
+        for (i = 0; i < il; i++) {
+            var marker = markers[i];
+            marker.setVisible(marker.year === y);
+        }
+    });
     function initialize() {
         var mapOptions = {
             center: new google.maps.LatLng((narrow ? 60 : 18), 0),

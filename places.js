@@ -653,22 +653,22 @@ window.places_data = {
         "USA": [
             {
                 name: "Grand Canyon National Park, AZ",
-                date: "2000-06-01",
+                date: "1990-06-01",
                 coords: [36.071839,-112.131361]
             },
             {
                 name: "Flagstaff, AZ",
-                date: "2000-06-01",
+                date: "1990-06-01",
                 coords: [35.199167, -111.631111]
             },
             {
                 name: "Phoenix, AZ",
-                date: "2000-06-01",
+                date: "1990-06-01",
                 coords: [33.448263,-112.073821]
             },
             {
                 name: "Sedona, AZ",
-                date: "2000-06-01",
+                date: "1990-06-01",
                 coords: [34.855699,-111.764017]
             },
             {
@@ -788,7 +788,7 @@ window.places_data = {
             },
             {
                 name: "Vail, CO",
-                date: "1991-06-01",
+                date: "1992-06-01",
                 coords: [39.643596,-106.37841]
             },
             {
@@ -1060,7 +1060,7 @@ window.places_data = {
             },
             {
                 name: "Stowe, VT",
-                date: "1994-06-01",
+                date: "1993-06-01",
                 coords: [44.465439,-72.687416]
             },
             {

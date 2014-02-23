@@ -214,6 +214,57 @@ header,
 }
 
 
+#map-years {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    z-index: 50;
+    text-align: center;
+}
+#map-years.list-inline>li {
+    padding: 0 2px;
+    color: #888;
+}
+#map-years a {
+    color: #fff;
+    font-family: 'Quicksand', helvetica, arial, sans-serif;
+    font-weight: 300;
+}
+
+
+.toast {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 15%;
+    z-index: 50;
+    display: block;
+    text-align: center;
+    -webkit-transition: opacity .5s ease-out;
+       -moz-transition: opacity .5s ease-out;
+        -ms-transition: opacity .5s ease-out;
+         -o-transition: opacity .5s ease-out;
+            transition: opacity .5s ease-out;
+    opacity: 1;
+}
+.toast.hidden {
+    opacity: 0;
+}
+.toast .content {
+    display: inline-block;
+    padding: 12px;
+    background: rgba(0, 0, 0, .8);
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+    color: #fff;
+    font-family: 'Quicksand', helvetica, arial, sans-serif;
+    font-weight: 300;
+    font-size: 42px;
+}
+
+
 
 #code {
     position: relative;
