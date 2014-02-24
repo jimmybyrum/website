@@ -174,6 +174,55 @@
 
 
 
+#travel {
+    position: relative;
+}
+#map-years {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 50px;
+    z-index: 50;
+    text-align: center;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+         -o-user-select: none;
+            user-select: none;
+}
+#map-years>.year.has-travel {
+    color: #fff;
+    cursor: pointer;
+}
+#map-years>.year,
+#map-years>.year.muted {
+    display: inline-block;
+    padding: 0 2px;
+    color: #888;
+    font-family: 'Quicksand', helvetica, arial, sans-serif;
+    font-weight: 300;
+}
+#map-years>.underline {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    border-color: #fff;
+    -webkit-transition: left .3s linear, width .3s linear;
+       -moz-transition: left .3s linear, width .3s linear;
+        -ms-transition: left .3s linear, width .3s linear;
+         -o-transition: left .3s linear, width .3s linear;
+            transition: left .3s linear, width .3s linear;
+}
+@media (max-width: 1200px) {
+    #map-years>.underline {
+        display: none;
+    }
+    #map-years>.is-showing {
+        text-decoration: underline;
+    }
+}
+
+
 
 .footer {
     padding: 50px 60px;

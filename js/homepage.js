@@ -13,6 +13,7 @@ $(document).ready(function() {
     var code_position = 0;
     var $year = $("#map-year span");
     var $years = $("#map-years");
+    var $years_ = $("#map-years .underline");
 
     var $html = $("html");
 
@@ -171,9 +172,17 @@ $(document).ready(function() {
         } else if (e.keyCode === 27) {
             $(".dialog").removeClass("showing");
         } else if (e.keyCode === 39 || e.keyCode === 76) {
-            $carousel.carousel("next");
+            if ( $html.hasClass("section-top") ) {
+                $carousel.carousel("next");
+            } else if ( $html.hasClass("section-travel") ) {
+                gotoYear(e, "next");
+            }
         } else if (e.keyCode === 37 || e.keyCode === 72) {
-            $carousel.carousel("prev");
+            if ( $html.hasClass("section-top") ) {
+                $carousel.carousel("prev");
+            } else if ( $html.hasClass("section-travel") ) {
+                gotoYear(e, "prev");
+            }
         } else if (e.keyCode === 75) {
             if (current_section === "section-footer") {
                 gotoSection("section-code");
@@ -201,7 +210,7 @@ $(document).ready(function() {
         $link.trigger("click");
     };
 
-    var map, locations = [], li = 0, pins_placed = false, markers = [], infowindows = [];
+    var map, locations = [], li = 0, pins_placed = false, placing = true, markers = [], infowindows = [];
     var hideAllInfowindows = function() {
         var i, il = infowindows.length;
         for (i = 0; i < il; i++) {
@@ -222,7 +231,7 @@ $(document).ready(function() {
         }
         if (location.date) {
             iw_content += "<br>"+location.date;
-            $year.html(location.year);
+            showYear(location.year);
         }
         var infowindow = new google.maps.InfoWindow({
             content: iw_content
@@ -232,7 +241,8 @@ $(document).ready(function() {
             map: map,
             icon: "/images/pin.png",
             title: location.name,
-            year: location.year
+            year: location.year,
+            visible: placing
             // animation: google.maps.Animation.DROP
         });
         markers.push(marker);
@@ -248,17 +258,10 @@ $(document).ready(function() {
         if (location) {
             placePin(location);
             li++;
-        } else {
-            _.delay(function() {
-                $year.parent().addClass("hidden");
-            }, 3000);
         }
     };
-    var getNextYear = function() {
-        return current_year++;
-    };
-    var current_year = 1978;
-    var now_year = new Date().getFullYear();
+    var start_year = 1978;
+    var end_year = new Date().getFullYear();
     var year_count = {};
     var placePins = function() {
         if ( ! pins_placed && map) {
@@ -284,26 +287,133 @@ $(document).ready(function() {
             locations.sort(function(a, b) {
                 return a.epoch - b.epoch;
             });
-            for (var y = current_year; y <= now_year; y++) {
-                if (year_count[y]) {
-                    $years.append('<li><a class="year" data-value="'+y+'" href="/year/'+y+'/">\''+y.toString().substring(2,4)+'</a></li>');
-                } else {
-                    $years.append('<li>\''+y.toString().substring(2,4)+'</li>');
-                }
+            for (var y = start_year; y <= end_year; y++) {
+                var $item = $("<span/>");
+                $item.addClass("muted year year-"+y);
+                $item.data("year", y);
+                if (year_count[y]) { $item.addClass("has-travel"); }
+                $item.text("'" + y.toString().substring(2,4));
+                $years.append($item);
             }
             placeNextPin();
         }
     };
-    $(document).on("click", ".year", function(e) {
+    var previous_showing_years = [];
+    var showing_years = [];
+    var dragging = false;
+    $(document).on("mousedown touchstart", ".year", function(e) {
+        placing = false;
+        dragging = true;
+        var $item = $(e.target);
+        var year = $item.data("year");
+        if ( ! e.shiftKey ) {
+            previous_showing_years = showing_years;
+            showing_years = [];
+        }
+        showing_years.push(year);
+    });
+    $(document).on("mousemove touchmove", ".year", function(e) {
         e.preventDefault();
-        var $year = $(e.target);
-        var y = parseInt($year.attr("data-value"), 10);
-        var i, il = markers.length;
-        for (i = 0; i < il; i++) {
-            var marker = markers[i];
-            marker.setVisible(marker.year === y);
+        if (dragging) {
+            var $item = $(e.target);
+            var year = $item.data("year");
+            showing_years.push(year);
+            showYears();
+            highlightYears();
         }
     });
+    $(document).on("mouseup touchend", "#map-years", function(e) {
+        dragging = false;
+        if (showing_years.length === 0) {
+            setAllYears();
+        } else if (showing_years.length === 1 && previous_showing_years.length === 1) {
+            if ( _.intersection(showing_years, previous_showing_years).length === 1) {
+                setAllYears();
+            }
+        } else {
+            var min = _.min(showing_years);
+            var max = _.max(showing_years);
+            showing_years = [];
+            for (var i = min; i <= max; i++) {
+                showing_years.push(i);
+            }
+        }
+        showYears();
+        highlightYears();
+    });
+    var setAllYears = function() {
+        showing_years = [];
+        for (var i = start_year; i <= end_year; i++) {
+            showing_years.push(i);
+        }
+    };
+    var showingAllYears = function() {
+        return _.contains(showing_years, start_year) && _.contains(showing_years, end_year);
+    };
+    var gotoYear = function(e, direction) {
+        placing = false;
+        var new_year;
+        if (direction === "next") {
+            if (showing_years.length === 0 || showingAllYears()) {
+                new_year = start_year;
+            } else {
+                var year = _.max(showing_years);
+                new_year = year + 1;
+            }
+        } else {
+            if (showing_years.length === 0 || showingAllYears()) {
+                new_year = end_year;
+            } else {
+                var year = _.min(showing_years);
+                new_year = year - 1;
+            }
+        }
+        if (new_year < start_year || new_year > end_year) {
+            setAllYears();
+        } else {
+            if ( ! e.shiftKey) {
+                showing_years = [];
+            }
+            showing_years.push(new_year);
+        }
+        showYears();
+        highlightYears();
+    };
+    var highlightYears = function() {
+        var start = _.min(showing_years);
+        var $start = $(".year-" + start);
+        var start_left = $start.position().left;
+        $years_.css("left", start_left);
+        if (showing_years.length > 1) {
+            var end = _.max(showing_years);
+            var $end = $(".year-" + end);
+            var left = $end.position().left;
+            var width = $end.innerWidth();
+            var right = (left + width) - start_left;
+            $years_.width(right);
+        } else {
+            $years_.width($start.innerWidth());
+        }
+        $(".year").removeClass("is-showing");
+        _.each(showing_years, function(y) {
+            $(".year-" + y).addClass(("is-showing"));
+        });
+    };
+    var showYears = function() {
+        var i, il = markers.length;
+        var min = _.min(showing_years);
+        var max = _.max(showing_years);
+        for (i = 0; i < il; i++) {
+            var marker = markers[i];
+            var visible = marker.year >= min && marker.year <= max;
+            marker.setVisible(visible);
+        }
+    };
+    var showYear = function(year) {
+        var $start = $(".year:first");
+        var $end = $(".year-" + year);
+        $end.removeClass("muted");
+    };
     function initialize() {
         var mapOptions = {
             center: new google.maps.LatLng((narrow ? 60 : 18), 0),
@@ -312,8 +422,9 @@ $(document).ready(function() {
             mapTypeId: google.maps.MapTypeId.SATELLITE,
             streetViewControl: false,
             panControl: false,
+            keyboardShortcuts: false,
             mapTypeControlOptions: {
-                position: google.maps.ControlPosition.BOTTOM_CENTER,
+                position: google.maps.ControlPosition.RIGHT_BOTTOM,
                 style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
             },
             zoomControl: true,
