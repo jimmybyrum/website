@@ -262,7 +262,7 @@ $(document).ready(function() {
     };
     var start_year = 1978;
     var end_year = new Date().getFullYear();
-    var year_count = {};
+    var pins_by_year = {};
     var placePins = function() {
         if ( ! pins_placed && map) {
             pins_placed = true;
@@ -274,12 +274,12 @@ $(document).ready(function() {
                     for (c = 0; c < cl; c++) {
                         var date = new Date(locs[c].date);
                         var year = date.getFullYear();
-                        if ( ! year_count[year]) {
-                            year_count[year] = 0;
+                        if ( ! pins_by_year[year]) {
+                            pins_by_year[year] = 0;
                         }
                         locs[c].epoch = date;
                         locs[c].year = year;
-                        year_count[year]++;
+                        pins_by_year[year]++;
                         locations.push(locs[c]);
                     }
                 }
@@ -291,7 +291,7 @@ $(document).ready(function() {
                 var $item = $("<span/>");
                 $item.addClass("muted year year-"+y);
                 $item.data("year", y);
-                if (year_count[y]) { $item.addClass("has-travel"); }
+                if (pins_by_year[y]) { $item.addClass("has-travel"); }
                 $item.text("'" + y.toString().substring(2,4));
                 $years.append($item);
             }
@@ -303,46 +303,69 @@ $(document).ready(function() {
     var dragging = false;
     $(document).on("mousedown touchstart", ".year", function(e) {
         placing = false;
-        dragging = true;
-        var $item = $(e.target);
-        var year = $item.data("year");
-        if ( ! e.shiftKey ) {
-            previous_showing_years = showing_years;
-            showing_years = [];
+        if ( ! dragging) {
+            dragging = true;
+            var $item = $(e.target);
+            var year = $item.data("year");
+            if ( ! e.shiftKey ) {
+                resetYearsShowing();
+            }
+            addYearToShowing(year);
         }
-        showing_years.push(year);
     });
     $(document).on("mousemove touchmove", ".year", function(e) {
         e.preventDefault();
         if (dragging) {
+            $html.addClass("dragging");
             var $item = $(e.target);
+            try {
+                var touches = e.originalEvent.changedTouches;
+                var t = touches[(touches.length-1)];
+                $item = $(document.elementFromPoint(t.clientX, t.clientY));
+            } catch(e) {}
             var year = $item.data("year");
-            showing_years.push(year);
+            if (year) {
+                addYearToShowing(year);
+                showYears();
+                highlightYears();
+            }
+        }
+    });
+    $(document).on("mouseup touchend", function(e) {
+        var oe = e.originalEvent;
+        if (dragging) {
+            dragging = false;
+            if (showing_years.length === 0) {
+                setAllYears();
+            } else if (showing_years.length === 1 &&
+                       previous_showing_years.length === 1 &&
+                       _.intersection(showing_years, previous_showing_years).length === 1)
+            {
+                setAllYears();
+            } else {
+                var min = _.min(showing_years);
+                var max = _.max(showing_years);
+                resetYearsShowing();
+                for (var i = min; i <= max; i++) {
+                    addYearToShowing(i);
+                }
+            }
             showYears();
             highlightYears();
         }
+        $html.removeClass("dragging");
     });
-    $(document).on("mouseup touchend", "#map-years", function(e) {
-        dragging = false;
-        if (showing_years.length === 0) {
-            setAllYears();
-        } else if (showing_years.length === 1 && previous_showing_years.length === 1) {
-            if ( _.intersection(showing_years, previous_showing_years).length === 1) {
-                setAllYears();
-            }
-        } else {
-            var min = _.min(showing_years);
-            var max = _.max(showing_years);
-            showing_years = [];
-            for (var i = min; i <= max; i++) {
-                showing_years.push(i);
-            }
-        }
-        showYears();
-        highlightYears();
-    });
-    var setAllYears = function() {
+    var resetYearsShowing = function() {
+        previous_showing_years = showing_years;
         showing_years = [];
+    };
+    var addYearToShowing = function(year) {
+        if ( ! _.contains(showing_years, year)) {
+            showing_years.push(year);
+        }
+    };
+    var setAllYears = function() {
+        resetYearsShowing();
         for (var i = start_year; i <= end_year; i++) {
             showing_years.push(i);
         }
@@ -372,7 +395,7 @@ $(document).ready(function() {
             setAllYears();
         } else {
             if ( ! e.shiftKey) {
-                showing_years = [];
+                resetYearsShowing();
             }
             showing_years.push(new_year);
         }
@@ -380,24 +403,27 @@ $(document).ready(function() {
         highlightYears();
     };
     var highlightYears = function() {
-        var start = _.min(showing_years);
-        var $start = $(".year-" + start);
-        var start_left = $start.position().left;
-        $years_.css("left", start_left);
-        if (showing_years.length > 1) {
-            var end = _.max(showing_years);
-            var $end = $(".year-" + end);
-            var left = $end.position().left;
-            var width = $end.innerWidth();
-            var right = (left + width) - start_left;
-            $years_.width(right);
+        if ($years_.is(":visible")) {
+            var start = _.min(showing_years);
+            var $start = $(".year-" + start);
+            var start_left = $start.position().left;
+            $years_.css("left", start_left);
+            if (showing_years.length > 1) {
+                var end = _.max(showing_years);
+                var $end = $(".year-" + end);
+                var left = $end.position().left;
+                var width = $end.innerWidth();
+                var right = (left + width) - start_left;
+                $years_.width(right);
+            } else {
+                $years_.width($start.innerWidth());
+            }
         } else {
-            $years_.width($start.innerWidth());
+            $(".year").removeClass("is-showing");
+            _.each(showing_years, function(y) {
+                $(".year-" + y).addClass(("is-showing"));
+            });
         }
-        $(".year").removeClass("is-showing");
-        _.each(showing_years, function(y) {
-            $(".year-" + y).addClass(("is-showing"));
-        });
     };
     var showYears = function() {
         var i, il = markers.length;

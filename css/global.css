@@ -172,6 +172,10 @@
     }
 }
 
+.dragging #travel * {
+    cursor: ew-resize !important;
+}
+
 
 
 #travel {
