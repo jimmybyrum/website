@@ -1010,27 +1010,27 @@ window.places_data = {
             },
             {
                 name: "Coamo, PR",
-                date: "2012-02-04",
+                date: "2013-02-04",
                 coords: [18.08, -66.358056]
             },
             {
                 name: "Esperanza, PR",
-                date: "2012-02-01",
+                date: "2013-02-01",
                 coords: [18.10, -65.47]
             },
             {
                 name: "Naguabo, PR",
-                date: "2012-02-01",
+                date: "2013-02-01",
                 coords: [18.219444, -65.736667]
             },
             {
                 name: "Ponce, PR",
-                date: "2012-02-03",
+                date: "2013-02-03",
                 coords: [18, -66.616667]
             },
             {
                 name: "San Juan, PR",
-                date: "2012-01-31",
+                date: "2013-01-31",
                 coords: [18.45, -66.066667]
             },
             {
