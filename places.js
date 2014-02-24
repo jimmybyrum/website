@@ -480,13 +480,13 @@ window.places_data = {
         "Scotland": [
             {
                 name: "Edinburgh",
-                date: "2008-12-10",
+                date: "2006-12-10",
                 coords: [55.950254,-3.187606],
                 photos: "http://flickr.com/photos/jimmybyrum/sets/72157594442639227/"
             },
             {
                 name: "Inverness",
-                date: "2008-12-08",
+                date: "2006-12-08",
                 coords: [57.476695,-4.231454],
                 photos: "http://flickr.com/photos/jimmybyrum/sets/72157594442639227/"
             }
