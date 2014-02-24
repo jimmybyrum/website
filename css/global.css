@@ -204,6 +204,8 @@
     padding: 0 2px;
     color: #888;
     font-family: 'Quicksand', helvetica, arial, sans-serif;
+}
+.no-touch #map-years>.year.muted {
     font-weight: 300;
 }
 #map-years>.underline {

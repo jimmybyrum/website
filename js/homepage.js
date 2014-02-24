@@ -355,6 +355,11 @@ $(document).ready(function() {
         }
         $html.removeClass("dragging");
     });
+    if (Modernizr.touch) {
+        $(document).on("click", ".year", function(e) {
+            e.preventDefault();
+        });
+    }
     var resetYearsShowing = function() {
         previous_showing_years = showing_years;
         showing_years = [];
