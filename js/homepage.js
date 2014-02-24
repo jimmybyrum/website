@@ -302,6 +302,9 @@ $(document).ready(function() {
     var showing_years = [];
     var dragging = false;
     $(document).on("mousedown touchstart", ".year", function(e) {
+        if (Modernizr.touch) {
+            e.preventDefault();
+        }
         placing = false;
         if ( ! dragging) {
             dragging = true;
@@ -355,11 +358,6 @@ $(document).ready(function() {
         }
         $html.removeClass("dragging");
     });
-    if (Modernizr.touch) {
-        $(document).on("click", ".year", function(e) {
-            e.preventDefault();
-        });
-    }
     var resetYearsShowing = function() {
         previous_showing_years = showing_years;
         showing_years = [];
