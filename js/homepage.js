@@ -1,62 +1,49 @@
 $(document).ready(function() {
+
     var $window = $(window);
     var window_height = $window.height();
-
     var hi_res = window.devicePixelRatio && window.devicePixelRatio>1;
     var narrow = window.innerWidth && window.innerWidth<768;
-
-    var current_section = "section-top";
-
-    var $travel = $("#travel");
-    var travel_position = 0;
-    var $code = $("#code");
-    var code_position = 0;
-    var $year = $("#map-year span");
-    var $years = $("#map-years");
-    var $years_ = $("#map-years .underline");
 
     var $html = $("html");
 
     var $header = $(".header");
     var header_height = $header.innerHeight();
-
     var $title = $(".site-title");
-    var title_top = $title.position().top;
+    var title_top = Math.round($title.position().top);
 
     var $navigation = $(".navigation");
 
-    var $help = $("#help");
+    var current_section = "section-top";
 
     var $carousel = $("#carousel-example-generic");
+    var carousel_items = $carousel.find(".item").size();
+    var random = Math.floor(Math.random() * carousel_items);
+    $carousel.find(".item").removeClass("active");
+    $carousel.find(".item").eq(random).addClass("active");
+
+    var $travel = $("#travel");
+    var $code = $("#code");
+    // where in the page are these? distance from the top
+    // will be set below.
+    var travel_position = Math.round($travel.offset().top);
+    var code_position = Math.round($code.offset().top);
+
+    var $year = $("#map-year span");
+    var $years = $("#map-years");
+    var $years_ = $("#map-years .underline");
+
+    var $help = $("#help");
 
     var $footer = $("footer");
     var footer_position = 0;
 
-    var min = 0;
-    var max = $carousel.find(".item").size() - 1;
-    var random = Math.floor(Math.random() * (max - min + 1)) + min;
-    $carousel.find(".item").removeClass("active");
-    $carousel.find(".item").eq(random).addClass("active");
+    // a bunch of bits are hidden on start. once we've reached
+    // this point in the code, we're good to start showing stuff
+    // to the user, so remove the start class
     $html.removeClass("start");
 
-    var setCurrentSection = function(section) {
-        $html.removeClass("section-top section-travel section-code section-footer");
-        current_section = section;
-        $html.addClass(current_section);
-    };
-
-    var gotoSection = function(section) {
-        if (section === "section-top") {
-            $(".nav-top").trigger("click");
-        } else if (section === "section-travel") {
-            $(".nav-travel").trigger("click");
-        } else if (section === "section-code") {
-            $(".nav-code").trigger("click");
-        } else if (section === "section-footer") {
-            $.scrollTo($footer, 300, {easing: "swing"});
-        }
-    };
-
+    // photos carousel
     var startCarousel = function() {
         $(".carousel").carousel();
         $(".carousel-inner").swipe( {
@@ -72,18 +59,12 @@ $(document).ready(function() {
     var pauseCarousel = function() {
         $(".carousel").carousel("pause");
     };
-
-    var setCodeHeight = function() {
-        var $scrollbar = $(".ace_scrollbar");
-        if ($scrollbar.size() === 1) {
-            var code_height = $scrollbar.get(0).scrollHeight;
-            $(".editor-cx").height(code_height+"px");
-            editor.resize();
-        } else {
-            _.delay(setCodeHeight, 300);
-        }
+    var openCurrentPhoto = function() {
+        var $link = $(".item.active .carousel-caption a");
+        $link.get(0).click();
     };
 
+    // handle ui tweaks on scroll- mostly through changing class names
     var onScroll = function(e) {
         var scroll_top = $window.scrollTop();
 
@@ -113,6 +94,19 @@ $(document).ready(function() {
     onScroll = _.throttle(onScroll, 50);
     $window.on("scroll", onScroll);
 
+    // on init, and resize, set a bunch of vars for proper scrolling
+    // and heights (each section except the footer should at leats fill
+    // the viewport).
+    var setCodeHeight = function() {
+        var $scrollbar = $(".ace_scrollbar");
+        if ($scrollbar.size() === 1) {
+            var code_height = $scrollbar.get(0).scrollHeight;
+            $(".editor-cx").height(code_height+"px");
+            editor.resize();
+        } else {
+            _.delay(setCodeHeight, 300);
+        }
+    };
     var didInit = false;
     var onResize = function() {
         var diff = Math.abs($window.height() - window_height);
@@ -145,9 +139,25 @@ $(document).ready(function() {
     };
     onResize = _.throttle(onResize, 50);
     $window.on("resize", onResize);
-
     onResize();
 
+    // navigation
+    var setCurrentSection = function(section) {
+        $html.removeClass("section-top section-travel section-code section-footer");
+        current_section = section;
+        $html.addClass(current_section);
+    };
+    var gotoSection = function(section) {
+        if (section === "section-top") {
+            $(".nav-top").trigger("click");
+        } else if (section === "section-travel") {
+            $(".nav-travel").trigger("click");
+        } else if (section === "section-code") {
+            $(".nav-code").trigger("click");
+        } else if (section === "section-footer") {
+            $.scrollTo($footer, 300, {easing: "swing"});
+        }
+    };
     $(document).on("click", ".navigation a, .site-title a", function(e) {
         e.preventDefault();
         var $item = $(e.target);
@@ -161,12 +171,8 @@ $(document).ready(function() {
         pauseCarousel();
     });
 
-    $(document).on("click", ".glyphicon-remove-sign", function(e) {
-        $(e.target).parent().removeClass("showing");
-    });
-
+    // keyboard commands
     $(document).on("keydown", function(e) {
-        // console.warn(e.keyCode);
         if (e.keyCode === 191) {
             $help.addClass("showing");
         } else if (e.keyCode === 27) {
@@ -204,20 +210,19 @@ $(document).ready(function() {
         }
     });
 
-    var openCurrentPhoto = function() {
-        var $link = $(".item.active .carousel-caption a");
-        var href = $link.attr("href");
-        $link.trigger("click");
-    };
+    // for modal dialogs (help and voice comamnds)
+    $(document).on("click", ".glyphicon-remove-sign", function(e) {
+        $(e.target).parent().removeClass("showing");
+    });
 
-    var map, locations = [], li = 0, pins_placed = false, placing = true, markers = [], infowindows = [];
-    var hideAllInfowindows = function() {
-        var i, il = infowindows.length;
-        for (i = 0; i < il; i++) {
-            var infowindow = infowindows.pop();
-            infowindow.close();
-        }
-    };
+    // map and pins
+    var map,
+        locations = [],
+        locations_i = 0,
+        pins_placed = false,
+        placing = true,
+        markers = [],
+        infowindows = [];
     var placePin = function(location) {
         var lat = location.coords[0];
         var lon = location.coords[1];
@@ -254,10 +259,10 @@ $(document).ready(function() {
         _.delay(placeNextPin, 10);
     };
     var placeNextPin = function() {
-        var location = locations[li];
+        var location = locations[locations_i];
         if (location) {
             placePin(location);
-            li++;
+            locations_i++;
         }
     };
     var start_year = 1978;
@@ -443,6 +448,14 @@ $(document).ready(function() {
         var $end = $(".year-" + year);
         $end.removeClass("muted");
     };
+
+    var hideAllInfowindows = function() {
+        var i, il = infowindows.length;
+        for (i = 0; i < il; i++) {
+            var infowindow = infowindows.pop();
+            infowindow.close();
+        }
+    };
     function initialize() {
         var mapOptions = {
             center: new google.maps.LatLng((narrow ? 60 : 18), 0),
@@ -481,13 +494,21 @@ $(document).ready(function() {
                 map.panTo(lastValidCenter);
             });
         });
+
+        // watching the pins being placed only really works well
+        // on a big screen. For small screens, just get on with it.
+        if (Modernizr.touch) {
+            placePins();
+        }
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 
+    // resume is in an ace editor
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/javascript");
 
+    // voice commands
     var $voice = $("#voice-toggle");
     var $voice_intro = $("#voice-intro");
     var has_seen_intro = false;
@@ -591,9 +612,8 @@ $(document).ready(function() {
         });
     }
 
-    if (Modernizr.touch) {
-        placePins();
-    } else {
+    if ( ! Modernizr.touch) {
+        // no tooltips for touch devices.
         $(".footer a").tooltip();
     }
 });
