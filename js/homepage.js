@@ -107,6 +107,10 @@ $(document).ready(function() {
             _.delay(setCodeHeight, 300);
         }
     };
+    var start_section;
+    if (window.location.hash && window.location.hash !== "#") {
+        start_section = window.location.hash.substring(1);
+    }
     var didInit = false;
     var onResize = function() {
         var diff = Math.abs($window.height() - window_height);
@@ -123,8 +127,8 @@ $(document).ready(function() {
             } else {
                 $(".match-parent.vertical").css("min-height", window_height + "px");
             }
-            setCodeHeight();
             _.delay(function() {
+                setCodeHeight();
                 travel_position = Math.round($travel.offset().top);
                 code_position = Math.round($code.offset().top);
                 footer_position = Math.round($footer.offset().top - (window_height - $footer.height()));
@@ -133,9 +137,8 @@ $(document).ready(function() {
                     didInit = true;
                     onScroll();
                     startCarousel();
-                    if (window.location.hash && window.location.hash !== "#") {
-                        var section = window.location.hash.substring(1);
-                        gotoSection("section-" + section);
+                    if (start_section) {
+                        gotoSection("section-" + start_section);
                     }
                 }
             }, 300);
@@ -143,7 +146,6 @@ $(document).ready(function() {
     };
     onResize = _.throttle(onResize, 50);
     $window.on("resize", onResize);
-    onResize();
 
     // navigation
     var setCurrentSection = function(section) {
@@ -162,7 +164,7 @@ $(document).ready(function() {
                 window.history.replaceState(hash, "", hash);
             } catch(e) {}
         }
-    }, 100);
+    }, 300);
     var gotoSection = function(section) {
         if (section === "section-top") {
             $(".nav-top").trigger("click");
@@ -634,4 +636,6 @@ $(document).ready(function() {
         // no tooltips for touch devices.
         $(".footer a").tooltip();
     }
+
+    onResize();
 });
