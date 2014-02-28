@@ -150,16 +150,17 @@ $(document).ready(function() {
         $html.removeClass("section-top section-travel section-code section-footer");
         current_section = section;
         $html.addClass(current_section);
+        setBrowserLocation(current_section);
     };
-    var setBrowserLocation = function(section) {
+    var setBrowserLocation = _.debounce(function(section) {
         var hash = "#" + section.replace("section-", "");
-        if (section === "top") {
+        if (hash === "#top") {
             hash = "/";
         }
         try {
             window.history.pushState(hash, "", hash);
         } catch(e) {}
-    };
+    }, 100);
     var gotoSection = function(section) {
         if (section === "section-top") {
             $(".nav-top").trigger("click");
