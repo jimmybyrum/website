@@ -133,6 +133,10 @@ $(document).ready(function() {
                     didInit = true;
                     onScroll();
                     startCarousel();
+                    if (window.location.hash && window.location.hash !== "#") {
+                        var section = window.location.hash.substring(1);
+                        gotoSection("section-" + section);
+                    }
                 }
             }, 300);
         }
@@ -147,6 +151,15 @@ $(document).ready(function() {
         current_section = section;
         $html.addClass(current_section);
     };
+    var setBrowserLocation = function(section) {
+        var hash = "#" + section.replace("section-", "");
+        if (section === "top") {
+            hash = "/";
+        }
+        try {
+            window.history.pushState(hash, "", hash);
+        } catch(e) {}
+    };
     var gotoSection = function(section) {
         if (section === "section-top") {
             $(".nav-top").trigger("click");
@@ -156,6 +169,7 @@ $(document).ready(function() {
             $(".nav-code").trigger("click");
         } else if (section === "section-footer") {
             $.scrollTo($footer, 300, {easing: "swing"});
+            setBrowserLocation("footer");
         }
     };
     $(document).on("click", ".navigation a, .site-title a", function(e) {
@@ -164,6 +178,7 @@ $(document).ready(function() {
         var name = $item.attr("href");
         var $target = $(name);
         $.scrollTo($target, 300, {easing: "swing"});
+        setBrowserLocation(name.substring(1));
         $html.addClass("goto-" + name.substring(1));
         _.delay(function() {
             $html.removeClass("goto-" + name.substring(1));
@@ -497,7 +512,7 @@ $(document).ready(function() {
 
         // watching the pins being placed only really works well
         // on a big screen. For small screens, just get on with it.
-        if (Modernizr.touch) {
+        if (Modernizr.touch || current_section === "section-travel") {
             placePins();
         }
     }
