@@ -157,9 +157,11 @@ $(document).ready(function() {
         if (hash === "#top") {
             hash = "/";
         }
-        try {
-            window.history.pushState(hash, "", hash);
-        } catch(e) {}
+        if (hash !== window.location.hash) {
+            try {
+                window.history.replaceState(hash, "", hash);
+            } catch(e) {}
+        }
     }, 100);
     var gotoSection = function(section) {
         if (section === "section-top") {
