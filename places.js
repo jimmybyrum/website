@@ -1054,6 +1054,16 @@ window.places_data = {
                 coords: [32.823056, -79.845556]
             },
             {
+                name: "Park City, UT",
+                date: "2014-10-03",
+                coords: [40.659444, -111.499722]
+            },
+            {
+                name: "Salt Lake City, UT",
+                date: "2014-10-05",
+                coords: [40.75, -111.883333]
+            },
+            {
                 name: "Arlington, VA",
                 date: "2008-07-08",
                 coords: [38.879074,-77.069006]
