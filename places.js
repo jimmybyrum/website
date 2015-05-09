@@ -119,6 +119,18 @@ window.places_data = {
                 photos: "http://flickr.com/photos/jimmybyrum/sets/72157603406848679/"
             }
         ],
+        "Belgium": [
+            {
+                name: "Louvain-la-Neuve",
+                date: "2015-04-21",
+                coords: [50.668081,4.6118324]
+            },
+            {
+                name: "Brussels",
+                date: "2015-04-23",
+                coords: [50.854975,4.3753899]
+            }
+        ],
         "Bosnia and Herzegovina": [
             {
                 name: "Mostar",
@@ -391,6 +403,11 @@ window.places_data = {
                 name: "Killingen",
                 date: "2013-06-29",
                 coords: [59.909513,10.658755]
+            },
+            {
+                name: "Larvik",
+                date: "2015-04-16",
+                coords: [59.0499374,10.0201616]
             },
             {
                 name: "Oslo",
@@ -672,6 +689,11 @@ window.places_data = {
                 coords: [34.855699,-111.764017]
             },
             {
+                name: "Show Low, AZ",
+                date: "2014-12-08",
+                coords: [34.240467,-110.0447516]
+            },
+            {
                 name: "Big Sur, CA",
                 date: "2010-03-10",
                 coords: [36.1075,-121.625833]
@@ -901,6 +923,16 @@ window.places_data = {
                 name: "Detroit, MI",
                 date: "1988-06-01",
                 coords: [42.330165,-83.045913]
+            },
+            {
+                name: "Kalispell, MT",
+                date: "2015-05-07",
+                coords: [48.2072619,-114.3271384]
+            },
+            {
+                name: "Glacier National Park, MT",
+                date: "2015-05-08",
+                coords: [48.4727231,-114.6384624]
             },
             {
                 name: "Little Lake Sunapee, NH",
