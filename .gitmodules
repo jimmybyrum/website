@@ -1,6 +1,6 @@
 [submodule "lib/voice"]
 	path = lib/voice
-	url = http://github.com/jimmybyrum/voice-commands.js.git
+	url = https://github.com/jimmybyrum/voice-commands.js
 [submodule "lib/vault"]
 	path = lib/vault
-	url = http://github.com/jimmybyrum/vault.js
+	url = https://github.com/jimmybyrum/vault.js
