@@ -157,7 +157,7 @@ $(document).ready(function() {
     var setBrowserLocation = _.debounce(function(section) {
         var hash = "#" + section.replace("section-", "");
         if (hash === "#top") {
-            hash = "/";
+            hash = window.location.pathname;
         }
         if (hash !== window.location.hash) {
             try {
