@@ -740,6 +740,11 @@ window.places_data = {
                 coords: [36.593744,-121.882421]
             },
             {
+                name: "Monte Rio, CA",
+                date: "2014-07-01",
+                coords: [38.470278,-123.013889]
+            },
+            {
                 name: "Point Reyes, CA",
                 date: "2004-11-18",
                 coords: [37.99677,-123.01984]
