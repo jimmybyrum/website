@@ -529,7 +529,7 @@ $(document).ready(function() {
     editor.getSession().setMode("ace/mode/javascript");
 
     // voice commands
-    var $voice = $("#voice-toggle");
+    var $voice = $(".voice-toggle");
     var $voice_intro = $("#voice-intro");
     var has_seen_intro = false;
     var closeVoice = function() {
@@ -619,9 +619,16 @@ $(document).ready(function() {
             }
         ]);
 
-        $voice.on('click', function(e) {
-            e.preventDefault();
-            $voice.toggleClass("voice-on");
+        function toggleVoice(force) {
+            if (force) {
+                if (force === 'on') {
+                    $voice.addClass('voice-on');
+                } else {
+                    $voice.removeClass('voice-on');
+                }
+            } else {
+                $voice.toggleClass("voice-on");
+            }
             if ($voice.hasClass("voice-on")) {
                 $voice.find(".status").text("on");
                 SPEECH.start();
@@ -629,6 +636,12 @@ $(document).ready(function() {
                 $voice.find(".status").text("off");
                 SPEECH.stop();
             }
+        }
+
+        $(document).on('click', '.voice-toggle', function(e) {
+            e.preventDefault();
+            var $target = $(e.target);
+            toggleVoice($target.data('voice'));
         });
     }
 
