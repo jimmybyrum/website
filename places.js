@@ -1091,6 +1091,21 @@ window.places_data = {
                 coords: [32.823056, -79.845556]
             },
             {
+                name: "Custer State Park, SD",
+                date: "2016-10-06",
+                coords: [43.745833, -103.418056]
+            },
+            {
+                name: "Badlands, SD",
+                date: "2016-10-10",
+                coords: [43.75, -102.5]
+            },
+            {
+                name: "Rapid City, SD",
+                date: "2016-10-09",
+                coords: [44.076, -103.228]
+            },
+            {
                 name: "Park City, UT",
                 date: "2014-10-03",
                 coords: [40.659444, -111.499722]
