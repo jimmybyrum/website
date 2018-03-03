@@ -508,6 +508,13 @@ window.places_data = {
                 photos: "http://flickr.com/photos/jimmybyrum/sets/72157594442639227/"
             }
         ],
+        "Slovenia": [
+            {
+                name: "Ljubljana",
+                date: "2018-03-01",
+                coords: [46.055556,14.508333]
+            }
+        ],
         "Spain": [
             {
                 name: "Barcelona",
