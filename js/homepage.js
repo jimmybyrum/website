@@ -523,61 +523,71 @@ $(document).ready(function() {
   }
   google.maps.event.addDomListener(window, 'load', initialize);
 
+  function formatDate(d) {
+    if (typeof d.toLocaleDateString === 'function') {
+      return d.toLocaleDateString();
+    }
+    if (typeof d.toDateString === 'function') {
+      return d.toDateString();
+    }
+    return d.toString();
+  }
+
   var resume = {
       name: 'James Byrum',
       experience: [{
         company:      'CreativeLive',
         url:          'https://www.creativelive.com',
         location:     'San Francisco, CA',
-        start_date:   new Date('2014-05-05'),
-        end_date:     new Date('2018-01-12'),
+        start_date:   formatDate(new Date('2014-05-05')),
+        end_date:     formatDate(new Date('2018-01-12')),
         job_title:    'Director of Engineering'
       }, {
         company:      'theBoardlist',
         url:          'https://theboardlist.com',
         location:     'San Francisco, CA',
-        start_date:   new Date('2015-09-01'),
-        end_date:     undefined,
+        start_date:   formatDate(new Date('2015-09-01')),
+        start_date:   formatDate(new Date('2018-01-29')),
         job_title:    'Principal Engineer'
       }, {
         company:      'Coin Ledger',
         url:          'https://coinledger.io',
         location:     'San Francisco, CA',
-        start_date:   new Date('2014-02-05'),
-        end_date:     new Date('2017-09-25'),
+        start_date:   formatDate(new Date('2014-02-05')),
+        end_date:     formatDate(new Date('2017-09-25')),
         job_title:    'Everything'
       }, {
         company:      'TalkTo',
         url:          'http://talkto.com',
         location:     'Cambridge, MA',
-        start_date:   new Date('2010-11-16'),
-        end_date:     new Date('2014-04-18'),
+        start_date:   formatDate(new Date('2010-11-16')),
+        end_date:     formatDate(new Date('2014-04-18')),
         job_title:    'Engineer'
       }, {
         company:      'WebMocha',
         url:          'http://webmocha.com',
         location:     'San Francisco, CA',
-        start_date:   new Date('2009-10-01'),
-        end_date:     new Date('2010-12-15'),
+        start_date:   formatDate(new Date('2009-10-01')),
+        end_date:     formatDate(new Date('2010-12-15')),
         job_title:    'Lead Web Developer'
       }, {
         job_title:    'Traveler',
         locations:    ['Antarctica', 'Andes Mountains',
                'Atacama Desert', 'Perú'],
-        start_date:   new Date('2008-12-12'),
-        end_date:     new Date('2009-09-30')
+        start_date:   formatDate(new Date('2008-12-12')),
+        end_date:     formatDate(new Date('2009-09-30'))
       }, {
         organization: 'Ministerio de Educación de Chile',
         location:     'Porvenir, Chile',
-        start_date:   new Date('2008-07-01'),
-        end_date:     new Date('2008-12-10'),
+        start_date:   formatDate(new Date('2008-07-01')),
+        end_date:     formatDate(new Date('2008-12-10')),
         job_title:    'English Teacher'
       }, {
         company:      'Yahoo!',
         url:          'http://yahoo.com',
         locations:    [ 'Sunnvyvale, CA', 'London, UK' ],
-        start_date:   new Date('2004-05-01'),
-        end_date:     new Date('2008-06-30'),
+        start_date:   formatDate(new Date('2004-05-01')),
+        end_date:     formatDate(new Date('2008-06-30')),
         job_title:    'Frontend Engineer'
       }],
       patents: [{
@@ -621,9 +631,10 @@ $(document).ready(function() {
   editor.setTheme('ace/theme/monokai');
   editor.getSession().setMode('ace/mode/javascript');
   // editor.getSession().setUseWrapMode(true);
-  editor.setValue('var resume = ' + JSON.stringify(resume, null, 2));
+  editor.setValue('let resume = ' + JSON.stringify(resume, null, 2));
   editor.gotoLine(1, 1);
   window.resume = resume;
+  window.cv = resume;
 
   // voice commands
   var $voice = $('.voice-toggle');
