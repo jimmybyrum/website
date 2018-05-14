@@ -249,6 +249,11 @@ window.places_data = {
                 date: "2007-04-20",
                 coords: [48.856667,2.350987],
                 photos: "http://flickr.com/photos/jimmybyrum/sets/72157601989645674/,http://flickr.com/photos/jimmybyrum/sets/72157603247652962/"
+            },
+            {
+                name: "Villevaudé",
+                date: "2018-02-22",
+                coords: [48.9183,2.6522]
             }
         ],
         "Germany": [
@@ -400,9 +405,24 @@ window.places_data = {
         ],
         "Norway": [
             {
+                name: "Bodø",
+                date: "2018-05-09",
+                coords: [67.284167,14.381111]
+            },
+            {
+                name: "Honningsvåg",
+                date: "2018-05-11",
+                coords: [70.978611,25.976667]
+            },
+            {
                 name: "Killingen",
                 date: "2013-06-29",
                 coords: [59.909513,10.658755]
+            },
+            {
+                name: "Kirkenes",
+                date: "2018-05-12",
+                coords: [69.726944,30.045556]
             },
             {
                 name: "Larvik",
@@ -418,6 +438,11 @@ window.places_data = {
                 name: "Oslofjord",
                 date: "2013-06-29",
                 coords: [59.902,10.710741]
+            },
+            {
+                name: "Tromsø",
+                date: "2018-05-10",
+                coords: [69.682778,18.942778]
             }
         ],
         "Poland": [
@@ -510,9 +535,24 @@ window.places_data = {
         ],
         "Slovenia": [
             {
+                name: "Bled",
+                date: "2018-03-29",
+                coords: [46.368803,14.113975]
+            },
+            {
                 name: "Ljubljana",
                 date: "2018-03-01",
                 coords: [46.055556,14.508333]
+            },
+            {
+                name: "Postojna",
+                date: "2018-03-23",
+                coords: [45.775864,14.213661]
+            },
+            {
+                name: "Predjama",
+                date: "2018-03-23",
+                coords: [45.814569,14.128319]
             }
         ],
         "Spain": [
