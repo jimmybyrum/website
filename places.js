@@ -160,6 +160,13 @@ window.places_data = {
                 photos: "http://flickr.com/photos/jimmybyrum/sets/72157603505891305/"
             }
         ],
+        "Denmark": [
+            {
+                name: "København / Copenhagen",
+                date: "2018-10-19",
+                coords: [55.676111,12.568333]
+            }
+        ],
         "England": [
             {
                 name: "Bath",
