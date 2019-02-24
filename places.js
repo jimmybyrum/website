@@ -417,6 +417,11 @@ window.places_data = {
                 coords: [67.284167,14.381111]
             },
             {
+                name: "Gjøvik",
+                date: "2018-10-10",
+                coords: [60.783333,10.683333]
+            },
+            {
                 name: "Honningsvåg",
                 date: "2018-05-11",
                 coords: [70.978611,25.976667]
@@ -435,6 +440,11 @@ window.places_data = {
                 name: "Larvik",
                 date: "2015-04-16",
                 coords: [59.0499374,10.0201616]
+            },
+            {
+                name: "Lillehammer",
+                date: "2019-01-26",
+                coords: [61.114722,10.467222]
             },
             {
                 name: "Oslo",
