@@ -412,6 +412,11 @@ window.places_data = {
         ],
         "Norway": [
             {
+                name: "Bergen",
+                date: "2019-03-19",
+                coords: [60.389444,5.33]
+            },
+            {
                 name: "Bodø",
                 date: "2018-05-09",
                 coords: [67.284167,14.381111]
@@ -460,6 +465,11 @@ window.places_data = {
                 name: "Tromsø",
                 date: "2018-05-10",
                 coords: [69.682778,18.942778]
+            },
+            {
+                name: "Trondheim",
+                date: "2019-04-02",
+                coords: [63.429722,10.393333]
             }
         ],
         "Poland": [
