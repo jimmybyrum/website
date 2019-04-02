@@ -462,6 +462,11 @@ window.places_data = {
                 coords: [59.902,10.710741]
             },
             {
+                name: "Søndre Sandøy",
+                date: "2018-09-24",
+                coords: [59.011111,11.077778]
+            },
+            {
                 name: "Tromsø",
                 date: "2018-05-10",
                 coords: [69.682778,18.942778]
