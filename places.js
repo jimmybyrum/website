@@ -422,6 +422,11 @@ window.places_data = {
                 coords: [67.284167,14.381111]
             },
             {
+                name: "Fredrikstad",
+                date: "2019-08-12",
+                coords: [59.203299,10.953519]
+            },
+            {
                 name: "Gjøvik",
                 date: "2018-10-10",
                 coords: [60.783333,10.683333]
@@ -430,6 +435,11 @@ window.places_data = {
                 name: "Honningsvåg",
                 date: "2018-05-11",
                 coords: [70.978611,25.976667]
+            },
+            {
+                name: "Hønefoss",
+                date: "2020-07-20",
+                coords: [60.118835,10.318283]
             },
             {
                 name: "Killingen",
@@ -460,6 +470,11 @@ window.places_data = {
                 name: "Oslofjord",
                 date: "2013-06-29",
                 coords: [59.902,10.710741]
+            },
+            {
+                name: "Skjeberg",
+                date: "2020-07-14",
+                coords: [59.125538,11.188234]
             },
             {
                 name: "Søndre Sandøy",
