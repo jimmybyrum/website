@@ -71,14 +71,14 @@
     }
     .section-top .underline,
     .goto-top .underline {
-        left: 0;
-        width: 62px;
+        left: 2px;
+        width: 59px;
         opacity: 1;
     }
     .section-travel .underline,
     .goto-travel .underline {
         left: 72px;
-        width: 50px;
+        width: 49px;
         opacity: 1;
     }
     .section-code .underline,
