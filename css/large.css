@@ -171,13 +171,13 @@ html.disable-scrolling {
 }
 .section-travel .underline,
 .goto-travel .underline {
-    left: 158px;
+    left: 138px;
     width: 110px;
     opacity: 1;
 }
 .section-code .underline,
 .goto-code .underline {
-    left: 294px;
+    left: 262px;
     width: 87px;
     opacity: 1;
 }

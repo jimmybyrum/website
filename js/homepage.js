@@ -536,6 +536,13 @@ $(document).ready(function() {
   var resume = {
       name: 'James Byrum',
       experience: [{
+        company:      'Vipps',
+        url:          'https://www.vipps.no',
+        location:     'Oslo, Norway',
+        start_date:   formatDate(new Date('2018-08-06')),
+        end_date:     undefined,
+        job_title:    'Engineering Manager'
+      }, {
         company:      'CreativeLive',
         url:          'https://www.creativelive.com',
         location:     'San Francisco, CA',
