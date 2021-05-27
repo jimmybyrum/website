@@ -166,19 +166,19 @@ html.disable-scrolling {
 .section-top .underline,
 .goto-top .underline {
     left: 4px;
-    width: 125px;
+    width: 117px;
     opacity: 1;
 }
 .section-travel .underline,
 .goto-travel .underline {
-    left: 138px;
-    width: 110px;
+    left: 146px;
+    width: 96px;
     opacity: 1;
 }
 .section-code .underline,
 .goto-code .underline {
-    left: 262px;
-    width: 87px;
+    left: 267px;
+    width: 77px;
     opacity: 1;
 }
 .section-footer .underline,
